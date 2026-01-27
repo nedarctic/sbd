@@ -1,20 +1,137 @@
-import { ThemeSwitcher } from "@/components/theme-switcher";
+'use client';
+
+import Link from "next/link";
+import { MapPin, Mail, Phone } from "lucide-react";
+import { FaFacebook, FaLinkedin, FaInstagram, FaYoutube, FaReddit, FaTumblr } from "react-icons/fa";
+import { oswald } from "@/components/ui/fonts";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
-    return (
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-            <p>
-                Powered by{" "}
+
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  const quickLinks = [
+    { label: "About Us", href: "/about" },
+    { label: "Our Services", href: "/services" },
+    { label: "Order Request Form", href: "/order" },
+    { label: "Resources", href: "/resources" },
+    // { label: "Contact Us", href: "/contact" },
+  ];
+
+  const policyLinks = [{ label: "Privacy Policy", path: "/privacy-policy" }, { label: "Terms of Use", path: "/terms-of-use" }, { label: "Cookie Policy", path: "/cookie-policy" }, { label: "Refund Policy", path: "/refund-policy" }];
+
+  const socialLinks = [
+    { Icon: FaFacebook, href: "https://facebook.com/scholarbrood" },
+    { Icon: FaLinkedin, href: "https://www.linkedin.com/in/nicholas-otieno-28a25939a/" },
+    { Icon: FaInstagram, href: "https://www.instagram.com/scholarbrood/" },
+    { Icon: FaYoutube, href: "https://www.youtube.com/@ScholarBrood" },
+    { Icon: FaReddit, href: "https://www.reddit.com/user/scholarbrood/" },
+    { Icon: FaTumblr, href: "https://scholarbrood.tumblr.com/" },
+  ];
+
+  return (
+    <footer className="bg-black py-10 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 items-start text-sm">
+          {/* Contact Info */}
+          <div className="order-1 flex flex-col items-center justify-center">
+            <div className="text-center sm:text-left">
+              <h3 className={`${oswald.className} font-semibold text-[#E8B85F] mb-4`}>
+                Contact Us
+              </h3>
+              <div className="space-y-3 text-gray-400">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-[#E8B85F] flex-shrink-0" />
+                  <a
+                    href="mailto:info@scholarbrood.com"
+                    className={`${oswald.className} hover:text-[#E8B85F] transition break-words`}
+                  >
+                    info@scholarbrood.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-[#E8B85F] flex-shrink-0" />
+                  <span className={`${oswald.className}`}>+1 (843) 699-6020</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-4 h-4 text-[#E8B85F] flex-shrink-0" />
+                  <span className={`${oswald.className}`}>Myrtle Beach, SC 29572, USA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links & Legal */}
+          <div className="order-3 md:order-2 flex flex-col sm:flex-row justify-center gap-10 sm:gap-16">
+            {/* Quick Links */}
+            <div className="text-center sm:text-left">
+              <h4 className={`${oswald.className} font-semibold text-[#E8B85F] mb-3`}>
+                Quick Links
+              </h4>
+              <ul className="space-y-2">
+                {quickLinks.map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className={`${oswald.className} text-gray-400 hover:text-[#E8B85F] transition block`}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className="text-center sm:text-left">
+              <h4 className={`${oswald.className} font-semibold text-[#E8B85F] mb-3`}>
+                Legal Frameworks
+              </h4>
+              <ul className="space-y-2">
+                {policyLinks.map((item, index) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.path}
+                      className={`${oswald.className} text-gray-400 hover:text-[#E8B85F] transition block`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Social Icons */}
+          <div className="order-2 md:order-3 flex justify-center md:justify-end">
+            <div className="flex gap-5">
+              {socialLinks.map(({ Icon, href }, index) => (
                 <a
-                    href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-                    target="_blank"
-                    className="font-bold hover:underline"
-                    rel="noreferrer"
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-[#E8B85F] transition-all duration-300"
                 >
-                    Supabase
+                  <Icon className="w-6 h-6" />
                 </a>
-            </p>
-            <ThemeSwitcher />
-        </footer>
-    );
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-10 pt-8 border-t border-gray-800 text-center text-xs sm:text-sm text-gray-500">
+          <p className={`${oswald.className}`}>
+            © {year ?? "2026"} ScholarBrood. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 }
