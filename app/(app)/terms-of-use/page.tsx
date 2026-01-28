@@ -4,7 +4,7 @@ import { oswald } from '@/components/ui/fonts';
 import { useState, useEffect } from 'react';
 
 export default function TermsOfService() {
-  const [currentYear, setCurrentYear] = useState<number | null>();
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
