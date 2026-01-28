@@ -8,10 +8,10 @@ import { useState, useEffect } from "react";
 
 export default function Footer() {
 
-  const [year, setYear] = useState<number | null>(null);
+  const [currentYear, setCurrentYear] = useState<number | null>();
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
+    setCurrentYear(new Date().getFullYear());
   }, []);
 
   const quickLinks = [
@@ -128,7 +128,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-10 pt-8 border-t border-gray-800 text-center text-xs sm:text-sm text-gray-500">
           <p className={`${oswald.className}`}>
-            © {year ?? "2026"} ScholarBrood. All rights reserved.
+            © {currentYear} ScholarBrood. All rights reserved.
           </p>
         </div>
       </div>

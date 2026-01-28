@@ -1,15 +1,14 @@
-'use client'
+'use client';
 
 import { oswald } from '@/components/ui/fonts';
 import { useState, useEffect } from 'react';
 
 export default function TermsOfService() {
-
-  const [ year, setYear ] = useState<number>();
+  const [currentYear, setCurrentYear] = useState<number | null>();
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
-  });
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <div className={`${oswald.className} py-20 min-h-screen bg-gray-900 text-gray-200`}>
@@ -245,7 +244,7 @@ export default function TermsOfService() {
             <footer className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
               <p className="text-lg font-bold text-[#E8B85F] mb-2">ScholarBrood</p>
               <p>Expert Academic Writing, Editing, Research, and Publication Support for Students and Researchers</p>
-              <p className="mt-4 text-sm">© {year} ScholarBrood. All rights reserved.</p>
+              <p className="mt-4 text-sm">© {currentYear} ScholarBrood. All rights reserved.</p>
             </footer>
           </main>
         </div>
