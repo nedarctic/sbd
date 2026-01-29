@@ -4,6 +4,7 @@ import { getPayPalAccessToken } from "@/lib/paypal/paypal";
 export async function GET() {
         try {
                 const accessToken = await getPayPalAccessToken();
+                console.log("PayPal access token obtained:", accessToken);
                 return NextResponse.json({ accessToken });
         } catch (error) {
                 console.error("Error in PayPal API route:", error);
