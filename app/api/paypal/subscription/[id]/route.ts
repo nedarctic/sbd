@@ -23,7 +23,6 @@ export async function GET(
                                         "Content-Type": "application/json",
                                         Authorization: `Bearer ${accessToken}`,
                                 },
-                                credentials: "include",
                         }
                 );
 

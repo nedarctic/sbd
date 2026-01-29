@@ -66,7 +66,7 @@ export default function SuccessPage() {
 
     // Fetch subscription details
     useEffect(() => {
-        if (!subscriptionId) return;
+        if (!authChecked || !subscriptionId) return;
 
         const fetchSubscriptionDetails = async () => {
             try {
@@ -87,7 +87,7 @@ export default function SuccessPage() {
         };
 
         fetchSubscriptionDetails();
-    }, [subscriptionId]);
+    }, [authChecked, subscriptionId]);
 
     // Render loading state
     if (!authChecked || loading) {
