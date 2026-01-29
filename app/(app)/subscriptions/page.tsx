@@ -23,7 +23,7 @@ async function UserClaims() {
   return JSON.stringify(data.claims, null, 2);
 }
 
-async function UserDetails(): Promise<User | null> {
+export async function UserDetails(): Promise<User | null> {
   const supabase = await createClient();
 
   const {

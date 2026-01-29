@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { StoredSubscription } from "@/types/subscription";
 import { StoreSubscription } from "@/lib/paypal/subscriptions";
 import { getPayPalPlanName } from "@/lib/paypal/paypal";
+import { UserDetails } from "@/app/(app)/subscriptions/page"; 
 
 export async function GET(
         request: NextRequest,
@@ -39,16 +40,10 @@ export async function GET(
                         );
                 }
 
-                const supabase = await createClient();
-
-                const {
-                        data: { user },
-                        error: authError,
-                } = await supabase.auth.getUser();
-
-                if (authError || !user) {
+                const user = await UserDetails();
+                if (!user) {
                         return NextResponse.json(
-                                { error: "Unauthorized" },
+                                { error: "User not authenticated" },
                                 { status: 401 }
                         );
                 }
@@ -78,6 +73,7 @@ export async function GET(
                 };
 
                 // Store subscription in Supabase
+                const supabase = await createClient();
                 await StoreSubscription(supabase, mapped);
 
                 const planName = getPayPalPlanName(data.plan_id);
