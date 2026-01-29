@@ -25,7 +25,7 @@ export default function HeaderClient({authSlot}: {authSlot: React.ReactNode}) {
     ];
 
     return (
-        <header className="fixed top-0 left-0 w-full z-30 backdrop-blur-xl bg-white/80 dark:bg-[#1C1C30]/90 border-b border-gray-200/50 dark:border-gray-800/50 shadow-lg">
+        <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/80 dark:bg-[#1C1C30]/90 border-b border-gray-200/50 dark:border-gray-800/50 shadow-lg">
             <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex gap-4 justify-end items-end">
