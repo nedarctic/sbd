@@ -16,6 +16,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
+export const dynamic = "force-dynamic"
+
 async function getUserAndSubscription() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()

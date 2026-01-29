@@ -9,6 +9,8 @@ import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 
 import { createClient } from "@/lib/supabase/server";
 
+export const dynamic = "force-dynamic"
+
 async function UserClaims() {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getClaims();

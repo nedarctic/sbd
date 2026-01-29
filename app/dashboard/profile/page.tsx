@@ -22,6 +22,8 @@ import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 import { GetSubscription } from "@/lib/paypal/subscriptions";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic"
+
 // Type definitions based on Supabase Auth responses
 type UserMetadata = {
   avatar_url?: string;

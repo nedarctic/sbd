@@ -5,6 +5,8 @@ import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 import Link from "next/link";
 import { LogIn, CreditCard, ArrowRight } from "lucide-react";
 
+export const dynamic = "force-dynamic"
+
 async function getUserAndSubscriptionStatus() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();

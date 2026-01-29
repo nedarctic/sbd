@@ -4,8 +4,6 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { createClient } from "@/lib/supabase/server";
 
-export const dynamic = "force-dynamic"
-
 export function isActiveSubscription(sub: StoredSubscription | null) {
 	if (!sub) return false;
 

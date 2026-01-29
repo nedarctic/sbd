@@ -10,6 +10,8 @@ import { oswald } from "@/components/ui/fonts";
 import type { User } from "@supabase/supabase-js";
 import type { StoredSubscription } from "@/types/subscription";
 
+export const dynamic = "force-dynamic"
+
 export default function SubscriptionsPage({userDetails, subscriptionDetails, isActiveSubscription}: {userDetails: User | null; subscriptionDetails: StoredSubscription | null; isActiveSubscription: boolean} ) {
   const user = userDetails;
 
