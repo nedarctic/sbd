@@ -1,11 +1,14 @@
 import { PayPalConfig, SubscriptionPlan } from "@/types/paypal";
 
-const isProd = process.env.NODE_ENV === "production";
+// to be used after testing is complete
+// const isProd = process.env.NODE_ENV === "production"; 
 
 export const PAYPAL_CONFIG: PayPalConfig = {
-	clientId: isProd ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,
+	// clientId: isProd ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,
+  clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,
 	currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || "USD",
-	environment: isProd ? "production" : "sandbox",
+	// environment: isProd ? "production" : "sandbox",
+  environment: "sandbox",
 };
 
 export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [ // sandbox plans
