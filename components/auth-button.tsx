@@ -17,8 +17,8 @@ export async function AuthButton() {
       <LogoutButton />
     </div>
   ) : (
-    <div className="flex flex-col sm:flex-row items-start justify-center gap-2">
-      <Button asChild size="sm" variant={"outline"}>
+    <div className="flex flex-col sm:flex-row items-start justify-center space-y-2 sm:space-y-0 sm:space-x-2 gap-2">
+      <Button asChild size="sm" variant={"secondary"}>
         <Link href="/auth/login">Sign in</Link>
       </Button>
       <Button asChild size="sm" variant={"default"}>
