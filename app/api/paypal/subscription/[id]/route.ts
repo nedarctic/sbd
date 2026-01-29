@@ -13,6 +13,7 @@ export async function GET(
                 const subscriptionId = (await params).id;
 
                 const accessToken = await getPayPalAccessToken();
+                console.log("access token in subscription route:", accessToken);
 
                 const response = await fetch(
                         `${PAYPAL_API}/v1/billing/subscriptions/${subscriptionId}`,
