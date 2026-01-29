@@ -11,8 +11,6 @@ const clientSecret = process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
 export const PAYPAL_API = "https://api-m.sandbox.paypal.com";
 
 export async function getPayPalAccessToken() {
-	console.log("Client ID for fetching access token:", clientId);
-	console.log("Client Secret for fetching access token:", clientSecret ? "Exists" : "Not Set");
 
 	try {
 		const response = await fetch(
