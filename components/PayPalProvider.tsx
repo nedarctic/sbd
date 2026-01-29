@@ -7,6 +7,9 @@ import { ReactNode } from "react";
 export const dynamic = "force-dynamic"
 
 export default function PayPalProvider({ children }: { children: ReactNode }) {
+
+	console.log("PayPalProvider rendered with this client id:", PAYPAL_CONFIG.clientId,);
+
 	return (
 		<PayPalScriptProvider
 			options={{
