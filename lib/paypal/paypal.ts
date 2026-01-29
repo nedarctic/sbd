@@ -1,11 +1,14 @@
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
-const clientId = isProd ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
-const clientSecret = isProd ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
+// const clientId = isProd ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
+// const clientSecret = isProd ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
 
-export const PAYPAL_API = isProd
-	? "https://api-m.paypal.com"
-	: "https://api-m.sandbox.paypal.com";
+const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
+const clientSecret = process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
+
+// export const PAYPAL_API = isProd ? "https://api-m.paypal.com" : "https://api-m.sandbox.paypal.com";
+
+export const PAYPAL_API = "https://api-m.sandbox.paypal.com";
 
 export async function getPayPalAccessToken() {
 	try {
