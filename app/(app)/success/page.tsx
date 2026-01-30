@@ -77,6 +77,7 @@ export default async function SuccessPage({
     );
   } catch (error) {
     console.error("Error fetching subscription details:", error);
+    console.error("An error occurred while fetching subscription details:", error);
     return <div>Error fetching subscription details.</div>;
   }
 }
