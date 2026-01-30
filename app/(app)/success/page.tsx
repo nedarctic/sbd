@@ -5,6 +5,8 @@ import { UpdateSubscription } from "@/lib/paypal/subscriptions";
 import type { StoredSubscription } from "@/types/subscription";
 import { GetSubscription, StoreSubscription } from "@/lib/paypal/subscriptions";
 
+export const dynamic = "force-dynamic";
+
 async function fetchSubscriptionDetails(subscriptionId: string, accessToken: string) {
     const API_BASE = process.env.PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
 
@@ -105,7 +107,7 @@ export default async function SuccessPage({
         };
 
         console.log("Mapped subscription details for storage:", mapped);
-        
+
         console.log("Fetched subscription details:", subscriptionDetails);
         const planName = getPayPalPlanName(subscriptionDetails.plan_id);
         console.log("Plan Name:", planName);

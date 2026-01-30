@@ -1,7 +1,6 @@
 import { oswald } from "@/components/ui/fonts";
 import { createClient } from "@/lib/supabase/server";
 import { GetSubscription } from "@/lib/paypal/subscriptions";
-import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 import Link from "next/link";
 import { LogIn, CreditCard, ArrowRight } from "lucide-react";
 
@@ -16,7 +15,7 @@ async function getUserAndSubscriptionStatus() {
   }
 
   const subscription = await GetSubscription(user.id);
-  const hasActiveSub = isActiveSubscription(subscription);
+  const hasActiveSub = subscription?.status === "ACTIVE";
 
   return { isAuthenticated: true, hasActiveSub };
 }

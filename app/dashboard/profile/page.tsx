@@ -183,7 +183,7 @@ function VerificationBadge({ verified, label }: VerificationBadgeProps) {
 
 export default async function ProfilePage() {
   const { user, subscription } = await getUserAndSubscription();
-  const hasActiveSubscription = user && isActiveSubscription(subscription);
+  const hasActiveSubscription = subscription?.status === "ACTIVE";
 
   return (
     <div className={`${oswald.className} space-y-6 sm:space-y-8 px-3 sm:px-4 lg:px-8 py-4 sm:py-8`}>
