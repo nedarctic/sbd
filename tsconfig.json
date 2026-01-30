@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "lib": ["ES2015.Promise", "DOM", "DOM.Iterable"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
