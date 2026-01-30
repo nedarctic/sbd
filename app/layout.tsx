@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { oswald } from "@/components/ui/fonts";
 import { ThemeProvider } from "next-themes";
-import "./globals.css";
+import "@/app/globals.css";
 
 const defaultUrl = process.env.NODE_ENV === "production" ? `https://${process.env.PROD_URL}` : "http://localhost:3000";
 
