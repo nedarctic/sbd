@@ -67,7 +67,7 @@ export async function StartTrialSubscription(userId: string, trialDays = 7) {
 	// Implementation for starting a trial subscription
 }
 
-export async function UpdateSubscription(subscription: Subscription): Promise<Subscription | null> {
+export async function UpdateSubscription(subscription: StoredSubscription): Promise<StoredSubscription | null> {
 	const supabase = await createClient();
 	const { data, error } = await supabase
 		.from("tutorial_subscriptions")

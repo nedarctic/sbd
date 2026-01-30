@@ -78,7 +78,8 @@ export async function GET(
                 };
 
                 // Store subscription in Supabase
-                await StoreSubscription(supabase, mapped);
+                const storedSubscription = await StoreSubscription(supabase, mapped);
+                console.log("Stored subscription:", storedSubscription);
 
                 const planName = getPayPalPlanName(data.plan_id);
 
@@ -102,7 +103,7 @@ export async function GET(
                         createTime: data.create_time,
                         updateTime: data.update_time,
                 };
-
+                console.log("Returning subscription details:", subscriptionDetails);
                 return NextResponse.json(subscriptionDetails);
         } catch (error) {
                 console.error("Error fetching subscription details:", error);

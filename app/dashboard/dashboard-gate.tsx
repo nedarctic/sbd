@@ -18,13 +18,15 @@ async function getUserAndSubscription() {
   }
 
   const subscription = await GetSubscription(user.id);
+  console.log("User ID in dashboard gate:", user.id);
+  console.log("Fetched subscription in dashboard gate:", subscription);
   return { user, subscription };
 }
 
 export default async function DashboardPage() {
   const { user, subscription } = await getUserAndSubscription();
 
-  const hasActiveSubscription = user && isActiveSubscription(subscription);
+  const hasActiveSubscription = user && subscription?.status === "ACTIVE";
 
   // ────────────────────────────────────────────────
   //  Not logged in → show sign-in prompt
@@ -70,6 +72,7 @@ export default async function DashboardPage() {
   // Logged in → but no active subscription
   // ────────────────────────────────────────────────
   if (!hasActiveSubscription) {
+    console.log("User does not have an active subscription.", hasActiveSubscription);
     return (
       <main className={`${oswald.className} min-h-screen font-sans bg-white dark:bg-[#1C1C30] text-gray-900 dark:text-gray-100 transition-colors duration-500 flex items-center justify-center py-16 px-4`}>
         <div className="max-w-2xl w-full">
