@@ -4,9 +4,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { oswald } from "@/components/ui/fonts";
 
-const defaultUrl = process.env.PROD_URL
-  ? `https://${process.env.PROD_URL}`
-  : "http://localhost:3000";
+const defaultUrl = process.env.NODE_ENV === "production" ? `https://${process.env.PROD_URL}` : "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
