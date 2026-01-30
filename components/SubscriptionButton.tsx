@@ -3,7 +3,7 @@
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { SubscriptionPlan } from "@/types/paypal";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 export const dynamic = "force-dynamic"
@@ -13,7 +13,6 @@ interface SubscriptionButtonProps {
 }
 
 export default function SubscriptionButton({ plan }: SubscriptionButtonProps) {
-	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const getPayPalAccessToken = async () => {
@@ -60,7 +59,8 @@ export default function SubscriptionButton({ plan }: SubscriptionButtonProps) {
 				onApprove={async (data, actions) => {
 					try {
 						toast.success("Subscription successful!");
-						router.push(
+						console.log("Subscription success data:", data);
+						window.location.replace(
 							`/success?subscriptionId=${data.subscriptionID}`
 						);
 					} catch (error) {
