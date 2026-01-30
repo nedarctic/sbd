@@ -54,12 +54,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${oswald.className} antialiased`}>
-          <Header />
-          {children}
-          <Footer />
-      </body>
-    </html>
+    <div className={`${oswald.className} antialiased`}>
+      <Header />
+      { children }
+      <Footer />
+    </div>
   );
 }
