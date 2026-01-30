@@ -39,18 +39,23 @@ export async function GET(
                         );
                 }
 
+                const authHeader = request.headers.get("authorization");
+
+                if (!authHeader) {
+                        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+                }
+
+                const token = authHeader.replace("Bearer ", "");
+
                 const supabase = await createClient();
 
                 const {
                         data: { user },
-                        error: authError,
-                } = await supabase.auth.getUser();
+                        error,
+                } = await supabase.auth.getUser(token);
 
-                if (authError || !user) {
-                        return NextResponse.json(
-                                { error: "Unauthorized" },
-                                { status: 401 }
-                        );
+                if (error || !user) {
+                        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
                 }
 
                 const mapped: StoredSubscription = {

@@ -70,10 +70,16 @@ export default function SuccessPage() {
 
         const fetchSubscriptionDetails = async () => {
             try {
+                const {
+                    data: { session },
+                } = await supabase.auth.getSession();
+
                 const response = await fetch(`/api/paypal/subscription/${subscriptionId}`, {
-                    method: "GET",
-                    credentials: "include",
+                    headers: {
+                        Authorization: `Bearer ${session?.access_token}`,
+                    },
                 });
+
                 const data = await response.json();
 
                 if (!response.ok) throw new Error(data.error || "Failed to fetch subscription details");
