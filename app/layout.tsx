@@ -3,14 +3,12 @@ import { oswald } from "@/components/ui/fonts";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
-const defaultUrl = process.env.NODE_ENV === "production"
-  ? `https://${process.env.PROD_URL}`
-  : "http://localhost:3000";
+const defaultUrl = process.env.NODE_ENV === "production" ? `https://${process.env.PROD_URL}` : "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: "ScholarBrood",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  description: "ScholarBrood offers professional academic writing, research guidance, and publication processing services for students and researchers worldwide. High-quality, plagiarism-free work, expert mentorship, fast delivery, and journal-ready manuscript support.",
 };
 
 export default function RootLayout({
