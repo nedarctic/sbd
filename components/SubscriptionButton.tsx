@@ -20,7 +20,11 @@ export default function SubscriptionButton({ plan }: SubscriptionButtonProps) {
 		try {
 			const response = await fetch("/api/paypal");
 			const data = await response.json();
-			if (!response.ok) throw new Error(data.error);
+			console.log("access token response at subscription button:", data);
+			if (!response.ok) { 
+				console.log("Error response data:", data); 
+				throw new Error(data.error);
+			}
 			return data.accessToken;
 		} catch (error) {
 			console.error("Error getting PayPal access token:", error);
