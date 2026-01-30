@@ -4,6 +4,7 @@ import { getPayPalPlanName } from "@/lib/paypal/paypal";
 import { UpdateSubscription } from "@/lib/paypal/subscriptions";
 import type { StoredSubscription } from "@/types/subscription";
 import { GetSubscription, StoreSubscription } from "@/lib/paypal/subscriptions";
+import { getPayPalAccessToken } from "@/lib/paypal/paypal"; 
 
 export const dynamic = "force-dynamic";
 
@@ -56,29 +57,12 @@ export default async function SuccessPage({
             return <div>User not authenticated.</div>;
         }
 
-        const origin = process.env.NODE_ENV === "production" ? process.env.PROD_URL : "http://localhost:3000";
-
-        const accessToken = fetch(`${origin}/api/paypal`,
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            },
-        );
-
-        const accessTokenResponse = await accessToken;
-        const accessTokenData = await accessTokenResponse.json();
-        if (!accessTokenResponse.ok) {
-            console.log("Error response data:", accessTokenData);
-            throw new Error(accessTokenData.error);
-        }
-
-        const accessTokenValue = accessTokenData.accessToken;
+        const accessToken = await getPayPalAccessToken();
+        console.log("access token in success page:", accessToken);
 
         const subscriptionDetails = await fetchSubscriptionDetails(
             subscriptionId,
-            accessTokenValue
+            accessToken
         );
 
         // map details to StoredSubscription type for database storage and update
