@@ -48,7 +48,6 @@ export default async function SuccessPage({
         if (authError || !user) {
             return <div>User not authenticated.</div>;
         }
-        // const origin = process.env.PROD_URL || "http://localhost:3000";
 
         const origin = process.env.NODE_ENV === "production" ? process.env.PROD_URL : "http://localhost:3000";
 

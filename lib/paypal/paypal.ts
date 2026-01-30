@@ -1,14 +1,7 @@
-// const isProd = process.env.NODE_ENV === "production";
+const clientId = process.env.PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
+const clientSecret = process.env.PAYPAL_MODE === "live" ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
 
-// const clientId = isProd ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
-// const clientSecret = isProd ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
-
-const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
-const clientSecret = process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
-
-// export const PAYPAL_API = isProd ? "https://api-m.paypal.com" : "https://api-m.sandbox.paypal.com";
-
-export const PAYPAL_API = "https://api-m.sandbox.paypal.com";
+export const PAYPAL_API = process.env.PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
 
 export async function getPayPalAccessToken() {
 
@@ -37,21 +30,17 @@ export async function getPayPalAccessToken() {
 	}
 }
 
-const clientId_Sandbox = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
-const clientSecret_Sandbox = process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
-
-
 export async function getPayPalAccessToken_Sandbox() {
 	try {
 		const response = await fetch(
-			`https://api-m.sandbox.paypal.com/v1/oauth2/token`,
+			`${PAYPAL_API}/v1/oauth2/token`,
 			{
 				method: "POST",
 				headers: {
 					Accept: "application/json",
 					"Accept-Language": "en_US",
 					Authorization: `Basic ${Buffer.from(
-						`${clientId_Sandbox}:${clientSecret_Sandbox}`
+						`${clientId}:${clientSecret}`
 					).toString("base64")}`,
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
@@ -69,6 +58,8 @@ export async function getPayPalAccessToken_Sandbox() {
 
 export function getPayPalPlanName(planId: string) {
 	switch (planId) {
+
+		// sandbox plans
 		case "P-39881017BT6923640NFPYAOI":
 			return "Daily";
 		case "P-5U915405S03367941NFPYB7A":
@@ -77,6 +68,18 @@ export function getPayPalPlanName(planId: string) {
 			return "Monthly";
 		case "P-65D31465NV598683BNFPYCSI":
 			return "Yearly";
+
+		// live plans
+		case "P-1CR45848CH228015LNFQRDNA":
+			return "Daily"
+		case "P-34G36643Y9037544GNFQRDRQ":
+			return "Weekly";
+		case "P-39989793FF680434DNFQRDVA":
+			return "Monthly";
+		case "P-2W0268791L003394LNFQRDYY":
+			return "Yearly";
+
+		// default
 		default:
 			return "Unknown Plan";
 	}
