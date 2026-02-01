@@ -5,6 +5,7 @@ import {
   DocumentTextIcon,
   CurrencyDollarIcon,
   UserCircleIcon,
+  ArrowLeftIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,6 +17,7 @@ const links = [
   // { name: 'Orders', href: '/dashboard/order', icon: AcademicCapIcon },
   { name: 'Billing', href: '/dashboard/billing', icon: CurrencyDollarIcon },
   { name: 'Profile', href: '/dashboard/profile', icon: UserCircleIcon },
+  { name: 'Back to Home', href: '/', icon: ArrowLeftIcon },
   // { name: 'Settings', href: '/dashboard/settings', icon: Cog6ToothIcon },
 ];
 

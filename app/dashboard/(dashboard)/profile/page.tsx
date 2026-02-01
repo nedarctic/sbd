@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { oswald } from "@/components/ui/fonts";
 import Link from "next/link";
-import { isActiveSubscription } from "@/lib/paypal/subscriptions";
+import DashboardHeader from "../ui/header-dashboard";
 import { GetSubscription } from "@/lib/paypal/subscriptions";
 import { redirect } from "next/navigation";
 
@@ -190,6 +190,7 @@ export default async function ProfilePage() {
       {/* Not authenticated state */}
       {!user && (
         <div className="bg-gradient-to-br from-[#E8B85F]/10 to-[#1C1C30]/10 dark:from-[#E8B85F]/5 dark:to-[#1C1C30]/20 border border-[#E8B85F]/30 rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+          <DashboardHeader title="Profile Access" subtitle="Sign in to access your profile" />
           <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#E8B85F]/20 flex items-center justify-center">
             <LogIn className="w-8 h-8 text-[#E8B85F]" />
           </div>
@@ -220,6 +221,7 @@ export default async function ProfilePage() {
       {/* Authenticated but no active subscription */}
       {user && !hasActiveSubscription && (
         <div className="bg-gradient-to-br from-[#E8B85F]/8 to-[#1C1C30]/12 dark:from-[#E8B85F]/4 dark:to-[#1C1C30]/18 border-2 border-[#E8B85F]/25 rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+          <DashboardHeader title="Profile Access" subtitle="Active subscription required to view profile details" />
           <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#E8B85F]/15 flex items-center justify-center">
             <CreditCard className="w-8 h-8 text-[#E8B85F]" />
           </div>

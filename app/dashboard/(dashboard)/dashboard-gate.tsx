@@ -5,6 +5,7 @@ import { GetSubscription } from "@/lib/paypal/subscriptions";
 import { oswald } from "@/components/ui/fonts";
 import { getPayPalPlanName } from "@/lib/paypal/paypal";
 import Link from "next/link";
+import DashboardHeader from "./ui/header-dashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +35,7 @@ export default async function DashboardPage() {
   if (!user) {
     return (
       <main className={`${oswald.className} min-h-screen font-sans bg-white dark:bg-[#1C1C30] text-gray-900 dark:text-gray-100 transition-colors duration-500 flex items-center justify-center py-16 px-4`}>
+        <DashboardHeader title="Dashboard Access" subtitle="Sign in to access your dashboard" />
         <div className="max-w-2xl w-full">
           <div className="bg-gradient-to-br from-[#E8B85F]/10 to-[#1C1C30]/10 dark:from-[#E8B85F]/5 dark:to-[#1C1C30]/20 border border-[#E8B85F]/30 rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/20 flex items-center justify-center">

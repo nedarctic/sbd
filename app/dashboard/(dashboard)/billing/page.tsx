@@ -15,6 +15,7 @@ import {
   CheckCircle,
 } from 'lucide-react'
 import Link from 'next/link'
+import DashboardHeader from '../ui/header-dashboard'
 
 export const dynamic = "force-dynamic"
 
@@ -63,7 +64,11 @@ async function BillingContent() {
   // Not logged in
   if (!user) {
     return (
+      <div className="flex flex-col justify-center items-start ">
+        <DashboardHeader title="Billing & Subscription" subtitle="Log in to manage your plan and payment details" />
+      
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#1C1C30] px-4 py-16">
+        
         <div className="max-w-lg w-full bg-gradient-to-br from-[#E8B85F]/10 to-[#1C1C30]/10 dark:from-[#E8B85F]/5 dark:to-[#1C1C30]/20 border border-[#E8B85F]/30 rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/20 flex items-center justify-center">
             <LogIn className="w-10 h-10 text-[#E8B85F]" />
@@ -89,6 +94,7 @@ async function BillingContent() {
           </p>
         </div>
       </div>
+      </div>
     )
   }
 
@@ -96,6 +102,7 @@ async function BillingContent() {
   if (!subscription) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#1C1C30] px-4 py-16">
+        <DashboardHeader title="Billing & Subscription" subtitle="Subscribe to manage your plan and payment details" />
         <div className="max-w-lg w-full bg-gradient-to-br from-[#E8B85F]/8 to-[#1C1C30]/12 border-2 border-[#E8B85F]/25 rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/15 flex items-center justify-center">
             <CreditCard className="w-10 h-10 text-[#E8B85F]" />

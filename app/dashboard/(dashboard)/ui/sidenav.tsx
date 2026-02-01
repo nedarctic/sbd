@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { LogoutButton } from '@/components/dashboard/LogoutButton';
 
 export const dynamic = "force-dynamic"
 
@@ -84,14 +85,9 @@ export default function SideNav() {
         </div>
 
         {/* Logout */}
-        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <button
-            onClick={handleLogout}
-            className="flex h-12 w-full items-center justify-center gap-3 rounded-xl p-3 text-sm font-semibold bg-gradient-to-r from-[#E8B85F] to-[#D8A84F] text-[#1C1C30] hover:from-[#D8A84F] hover:to-[#C8983F] hover:scale-[1.02] shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#E8B85F] focus:ring-offset-2 dark:focus:ring-offset-[#1C1C30]"
-          >
-            <PowerIcon className="w-5 h-5" />
-            <span>Sign Out</span>
-          </button>
+        <div className="flex flex-col items-center justify-center mt-6 pt-6 w-3/4 sm:w-full border-t border-gray-200 dark:border-gray-700">
+          
+          <LogoutButton />
 
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-500 dark:text-gray-400">
