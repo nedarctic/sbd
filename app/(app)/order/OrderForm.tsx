@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { ArrowRight, Paperclip, X } from "lucide-react";
 import { oswald } from "@/components/ui/fonts";
+import PayPalButton from "@/components/dashboard/PayPalButton";
 
 export const dynamic = "force-dynamic"
 
@@ -41,6 +42,14 @@ export default function OrderForm() {
     const [modalState, setModalState] = useState<"loading" | "success" | "error" | null>(null);
     const [modalMessage, setModalMessage] = useState("");
 
+    const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+    const [paypalOrderId, setPaypalOrderId] = useState<string | null>(null);
+
+    const handlePaymentSuccess = (orderId: string) => {
+        setPaymentConfirmed(true);
+        setPaypalOrderId(orderId);
+    };
+
     useEffect(() => {
         if (isPending) {
             setModalState("loading");
@@ -66,6 +75,7 @@ export default function OrderForm() {
         <div className="flex flex-col items-center justify-center w-full">
             <motion.form
                 action={formAction}
+                encType="multipart/form-data"
                 className="w-full bg-white/10 backdrop-blur-xl mt-16 rounded-2xl p-8 sm:p-10 shadow-2xl"
             >
                 {/* Service selection */}
@@ -158,13 +168,37 @@ export default function OrderForm() {
                     )}
                 </div>
 
+                <div className="self-center w-full mb-8">
+                    {/* Hidden PayPal Order ID input */}
+                    {paymentConfirmed && paypalOrderId && (
+                        <input
+                            type="hidden"
+                            name="paypalOrderId"
+                            value={paypalOrderId}
+                        />
+                    )}
+
+                    {/* PayPal Button */}
+                    {SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING]?.amount > 0 && (
+                        <PayPalButton
+                            amount={SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING].amount}
+                            onSuccess={handlePaymentSuccess}
+                        />
+                    )}
+                </div>
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    disabled={modalState === "loading"}
-                    className="w-full flex justify-center items-center gap-3 bg-[#E8B85F] text-[#1C1C30] font-bold text-lg py-4 rounded-full hover:bg-[#d4a44e] hover:scale-[1.02] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                    disabled={!paymentConfirmed || modalState === "loading"}
+                    className="w-full flex justify-center items-center gap-3 bg-[#E8B85F] text-[#1C1C30] font-bold text-lg py-4 rounded-full
+             disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {modalState === "loading" ? "Submitting..." : "Submit Request"} <ArrowRight className="w-5 h-5" />
+                    {!paymentConfirmed
+                        ? "Complete Payment First"
+                        : modalState === "loading"
+                            ? "Submitting..."
+                            : "Submit Request"}
+                    <ArrowRight className="w-5 h-5" />
                 </button>
             </motion.form>
 

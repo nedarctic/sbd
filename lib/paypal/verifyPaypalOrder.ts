@@ -1,0 +1,57 @@
+import { getPayPalAccessToken } from "./paypal";
+
+const PAYPAL_API_BASE =
+  process.env.PAYPAL_MODE === "production"
+    ? process.env.PAYPAL_API_BASE_LIVE!
+    : process.env.PAYPAL_API_BASE_SANDBOX!;
+
+type VerifiedOrder = {
+  id: string;
+  status: string;
+  amount: number;
+  currency: string;
+};
+
+export async function verifyPaypalOrder(
+  orderId: string
+): Promise<VerifiedOrder | null> {
+  const accessToken = await getPayPalAccessToken();
+
+  const res = await fetch(
+    `${PAYPAL_API_BASE}/v2/checkout/orders/${orderId}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) {
+    console.error("PayPal order lookup failed:", await res.text());
+    return null;
+  }
+
+  const data = await res.json();
+
+  if (data.status !== "COMPLETED") {
+    return null;
+  }
+
+  const unit = data.purchase_units?.[0];
+  const amount = unit?.amount?.value;
+  const currency = unit?.amount?.currency_code;
+
+  if (!amount || !currency) {
+    return null;
+  }
+
+  return {
+    id: data.id,
+    status: data.status,
+    amount: Number(amount),
+    currency,
+  };
+}
