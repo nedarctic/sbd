@@ -1,4 +1,4 @@
-import SideNav from '@/app/dashboard/ui/sidenav';
+import SideNav from '@/app/dashboard/(dashboard)/ui/sidenav';
 import { oswald } from '@/components/ui/fonts';
  
 export default function Layout({ children }: { children: React.ReactNode }) {
