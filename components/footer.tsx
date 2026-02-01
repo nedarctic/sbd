@@ -17,9 +17,9 @@ export default function Footer() {
   const quickLinks = [
     { label: "About Us", href: "/about" },
     { label: "Our Services", href: "/services" },
-    // { label: "Order Request Form", href: "/order" },
+    { label: "Order Request Form", href: "/order" },
     { label: "Resources", href: "/resources" },
-    // { label: "Contact Us", href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   const policyLinks = [{ label: "Privacy Policy", path: "/privacy-policy" }, { label: "Terms of Use", path: "/terms-of-use" }, { label: "Cookie Policy", path: "/cookie-policy" }, { label: "Refund Policy", path: "/refund-policy" }];

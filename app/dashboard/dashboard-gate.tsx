@@ -230,13 +230,13 @@ export default async function DashboardPage() {
               Take advantage of your premium subscription with our expert academic support services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-              {/* <a
+              <a
                 href="/order"
                 className={`${oswald.className} inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#E8B85F] text-[#1C1C30] rounded-full text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300`}
               >
                 Start New Order
                 <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
-              </a> */}
+              </a>
               <a
                 href="/services"
                 className={`${oswald.className} inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#E8B85F] text-[#E8B85F] rounded-full text-lg sm:text-xl font-semibold hover:bg-[#E8B85F] hover:text-[#1C1C30] transition-all duration-300`}
