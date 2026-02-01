@@ -29,8 +29,7 @@ export default function OrderForm() {
         createOrderAction,
         {}
     );
-
-
+    
     const searchParams = useSearchParams();
     const incomingService = searchParams.get("service") || "Custom Service";
     const isPreSelected = !!searchParams.get("service");
@@ -49,6 +48,9 @@ export default function OrderForm() {
         setPaymentConfirmed(true);
         setPaypalOrderId(orderId);
     };
+
+    const requiresPayment =
+        SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING]?.amount > 0;
 
     useEffect(() => {
         if (isPending) {
@@ -186,20 +188,23 @@ export default function OrderForm() {
                         />
                     )}
                 </div>
+
                 {/* Submit Button */}
+
                 <button
                     type="submit"
-                    disabled={!paymentConfirmed || modalState === "loading"}
+                    disabled={(requiresPayment && !paymentConfirmed) || modalState === "loading"}
                     className="w-full flex justify-center items-center gap-3 bg-[#E8B85F] text-[#1C1C30] font-bold text-lg py-4 rounded-full
-             disabled:opacity-50 disabled:cursor-not-allowed"
+  disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {!paymentConfirmed
+                    {requiresPayment && !paymentConfirmed
                         ? "Complete Payment First"
                         : modalState === "loading"
                             ? "Submitting..."
                             : "Submit Request"}
                     <ArrowRight className="w-5 h-5" />
                 </button>
+
             </motion.form>
 
             {/* Modal */}
