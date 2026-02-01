@@ -21,7 +21,7 @@ export default function HeaderClient({authSlot}: {authSlot: React.ReactNode}) {
         { label: "Tutorials", href: "/tutorials" },
         { label: "Dashboard", href: "/dashboard" },
         // { label: "Blogs & Insight", href: "/blog" },
-        // { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/contact" },
     ];
 
     return (
