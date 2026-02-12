@@ -19,9 +19,9 @@ export default function SubscriptionButton({ plan }: SubscriptionButtonProps) {
 		try {
 			const response = await fetch("/api/paypal");
 			const data = await response.json();
-			console.log("access token response at subscription button:", data);
+			// console.log("access token response at subscription button:", data);
 			if (!response.ok) { 
-				console.log("Error response data:", data); 
+				// console.log("Error response data:", data); 
 				throw new Error(data.error);
 			}
 			return data.accessToken;
@@ -50,7 +50,7 @@ export default function SubscriptionButton({ plan }: SubscriptionButtonProps) {
 							},
 						});
 					} catch (error) {
-						console.error("Subscription creation error:", error);
+						// console.error("Subscription creation error:", error);
 						throw error;
 					} finally {
 						setIsLoading(false);
@@ -59,12 +59,12 @@ export default function SubscriptionButton({ plan }: SubscriptionButtonProps) {
 				onApprove={async (data, actions) => {
 					try {
 						toast.success("Subscription successful!");
-						console.log("Subscription success data:", data);
+						// console.log("Subscription success data:", data);
 						window.location.replace(
 							`/success?subscriptionId=${data.subscriptionID}`
 						);
 					} catch (error) {
-						console.error("Error processing subscription:", error);
+						// console.error("Error processing subscription:", error);
 						toast.error("Error processing subscription");
 					}
 				}}

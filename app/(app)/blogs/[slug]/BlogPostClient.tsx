@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import type { BlogPost } from '@/types/blog';
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
-  
+
   const [mounted, setMounted] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showShare, setShowShare] = useState(false);
@@ -36,103 +36,105 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
       </div>
 
       {/* Hero Section with Enhanced Design */}
-      <div className="relative h-[75vh] min-h-[650px] w-full overflow-hidden">
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/60 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20 z-10" />
+      <div className="h-screen w-full">
+        <div className="relative h-full w-full overflow-hidden">
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20 z-10" />
 
-        {/* Dynamic Image */}
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          className="object-cover scale-[1.02] brightness-[0.85] contrast-[1.1] saturate-[1.05] transition-all duration-1000"
-          priority
-          quality={100}
-          sizes="100vw"
-        />
+          {/* Dynamic Image */}
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover scale-[1.02] brightness-[0.85] contrast-[1.1] saturate-[1.05] transition-all duration-1000"
+            priority
+            quality={100}
+            sizes="100vw"
+          />
 
-        {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/50 to-transparent z-20" />
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/90 to-transparent z-20" />
+          {/* Decorative Elements */}
+          <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/50 to-transparent z-20" />
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/90 to-transparent z-20" />
 
-        {/* Premium Content Overlay */}
-        <div className="absolute inset-0 z-30 flex items-end pb-20 px-6 lg:px-20">
-          <div className="max-w-6xl w-full mx-auto">
-            {/* Category Badge with Animation */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="mb-8"
-            >
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                <Tag size={16} className="text-[#E8B85F]" />
-                <span className="text-sm font-medium tracking-wider text-white/90 uppercase">
-                  {post.category}
-                </span>
-              </div>
-            </motion.div>
+          {/* Premium Content Overlay */}
+          <div className="absolute inset-0 z-30 flex items-end pb-20 px-6 lg:px-20">
+            <div className="max-w-6xl w-full mx-auto">
+              {/* Category Badge with Animation */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="mb-8"
+              >
+                <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                  <Tag size={16} className="text-[#E8B85F]" />
+                  <span className="text-sm font-medium tracking-wider text-white/90 uppercase">
+                    {post.category}
+                  </span>
+                </div>
+              </motion.div>
 
-            {/* Main Title with Enhanced Typography */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 1 }}
-            >
-              <h1
-                className={`
+              {/* Main Title with Enhanced Typography */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 1 }}
+              >
+                <h1
+                  className={`
                   ${oswald.className}
                   text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold
                   leading-[0.92] tracking-[-0.02em]
                   text-white mb-8
                   drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]
                 `}
+                >
+                  {post.title}
+                </h1>
+              </motion.div>
+
+              {/* Metadata & Action Bar */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-white/20"
               >
-                {post.title}
-              </h1>
-            </motion.div>
+                <div className="flex flex-wrap items-center gap-6 text-white/80">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={18} className="text-[#E8B85F]" />
+                    <span className="text-sm tracking-wide">{post.date}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock size={18} className="text-[#E8B85F]" />
+                    <span className="text-sm tracking-wide">{post.readTime}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Eye size={18} className="text-[#E8B85F]" />
+                    <span className="text-sm tracking-wide">Premium Content</span>
+                  </div>
+                </div>
 
-            {/* Metadata & Action Bar */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-white/20"
-            >
-              <div className="flex flex-wrap items-center gap-6 text-white/80">
-                <div className="flex items-center gap-2">
-                  <Calendar size={18} className="text-[#E8B85F]" />
-                  <span className="text-sm tracking-wide">{post.date}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock size={18} className="text-[#E8B85F]" />
-                  <span className="text-sm tracking-wide">{post.readTime}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Eye size={18} className="text-[#E8B85F]" />
-                  <span className="text-sm tracking-wide">Premium Content</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setIsBookmarked(!isBookmarked)}
-                  className={`p-3 rounded-full backdrop-blur-md transition-all duration-300 ${isBookmarked
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => setIsBookmarked(!isBookmarked)}
+                    className={`p-3 rounded-full backdrop-blur-md transition-all duration-300 ${isBookmarked
                       ? 'bg-[#E8B85F]/20 border-[#E8B85F]/40 text-[#E8B85F]'
                       : 'bg-white/10 border-white/20 text-white/70 hover:text-[#E8B85F] hover:border-[#E8B85F]/40'
-                    } border`}
-                >
-                  <Bookmark size={20} fill={isBookmarked ? "currentColor" : "none"} />
-                </button>
-                <button
-                  onClick={() => setShowShare(!showShare)}
-                  className="p-3 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white/70 hover:text-[#E8B85F] hover:border-[#E8B85F]/40 transition-all duration-300"
-                >
-                  <Share2 size={20} />
-                </button>
-              </div>
-            </motion.div>
+                      } border`}
+                  >
+                    <Bookmark size={20} fill={isBookmarked ? "currentColor" : "none"} />
+                  </button>
+                  <button
+                    onClick={() => setShowShare(!showShare)}
+                    className="p-3 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white/70 hover:text-[#E8B85F] hover:border-[#E8B85F]/40 transition-all duration-300"
+                  >
+                    <Share2 size={20} />
+                  </button>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -473,8 +475,8 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   <button
                     onClick={() => setIsBookmarked(!isBookmarked)}
                     className={`inline-flex items-center justify-center gap-3 px-8 py-5 rounded-full border-2 transition-all duration-400 ${isBookmarked
-                        ? 'bg-[#E8B85F]/10 border-[#E8B85F] text-[#E8B85F]'
-                        : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-[#E8B85F] hover:text-[#E8B85F]'
+                      ? 'bg-[#E8B85F]/10 border-[#E8B85F] text-[#E8B85F]'
+                      : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-[#E8B85F] hover:text-[#E8B85F]'
                       }`}
                   >
                     <Bookmark size={20} fill={isBookmarked ? "currentColor" : "none"} />

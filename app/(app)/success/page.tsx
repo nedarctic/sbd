@@ -9,7 +9,9 @@ import { getPayPalAccessToken } from "@/lib/paypal/paypal";
 export const dynamic = "force-dynamic";
 
 async function fetchSubscriptionDetails(subscriptionId: string, accessToken: string) {
-    const API_BASE = process.env.PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
+    const PAYPAL_MODE = "live";
+
+    const API_BASE = PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
 
     const response = await fetch(
         `${API_BASE}/v1/billing/subscriptions/${subscriptionId}`,

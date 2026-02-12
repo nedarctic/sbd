@@ -1,7 +1,8 @@
 import { getPayPalAccessToken } from "./paypal";
 
+const PAYPAL_MODE = "live"
 const PAYPAL_API_BASE =
-  process.env.PAYPAL_MODE === "production"
+  PAYPAL_MODE === "live"
     ? process.env.PAYPAL_API_BASE_LIVE!
     : process.env.PAYPAL_API_BASE_SANDBOX!;
 

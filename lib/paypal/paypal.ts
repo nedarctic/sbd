@@ -1,7 +1,9 @@
-const clientId = process.env.PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
-const clientSecret = process.env.PAYPAL_MODE === "live" ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
+const PAYPAL_MODE = "live";
 
-export const PAYPAL_API = process.env.PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
+const clientId = PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
+const clientSecret = PAYPAL_MODE === "live" ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
+
+export const PAYPAL_API = PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
 
 export async function getPayPalAccessToken() {
 

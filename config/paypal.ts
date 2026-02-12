@@ -1,13 +1,15 @@
 import { PayPalConfig, SubscriptionPlan } from "@/types/paypal";
 
+const PAYPAL_MODE = "live";
+
 export const PAYPAL_CONFIG: PayPalConfig = {
-	clientId: process.env.PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,
+	clientId: PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,
 	currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || "USD",
-	environment: process.env.PAYPAL_MODE === "live" ? "production" : "sandbox",
+	environment: PAYPAL_MODE === "live" ? "production" : "sandbox",
 };
 
 // subscription plans for PayPal environments
-export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = process.env.PAYPAL_MODE === "live" ? [
+export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = PAYPAL_MODE === "live" ? [
   {
     id: "P-1CR45848CH228015LNFQRDNA",
     name: "Daily Pass",

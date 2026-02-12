@@ -93,7 +93,7 @@ export default async function DashboardPage() {
 
             <Link
               href="/subscriptions"
-              className={`${oswald.className} inline-flex items-center gap-3 px-8 py-4 bg-[#E8B85F] text-[#1C1C30] rounded-full text-xl font-semibold shadow-xl hover:shadow-2xl hover:bg-[#d4a347] transition-all duration-300`}
+              className={`${oswald.className} inline-flex items-center gap-3 px-8 py-4 bg-[#E8B85F] text-[#1C1C30] rounded-full text-md sm:text-xl font-semibold shadow-xl hover:shadow-2xl hover:bg-[#d4a347] transition-all duration-300`}
             >
               View Subscription Plans
               <ArrowRight className="w-6 h-6" />

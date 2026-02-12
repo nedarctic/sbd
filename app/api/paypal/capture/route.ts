@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getPayPalAccessToken } from "@/lib/paypal/paypal";
 
 export async function POST(req: Request) {
+  const PAYPAL_MODE = "live";
+
   try {
     const { orderID } = await req.json();
 
@@ -11,7 +13,7 @@ export async function POST(req: Request) {
 
     const accessToken = await getPayPalAccessToken();
 
-    const PAYPAL_API_BASE = process.env.PAYPAL_MODE === "production" ? process.env.PAYPAL_API_BASE_LIVE! : process.env.PAYPAL_API_BASE_SANDBOX!;
+    const PAYPAL_API_BASE = PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE! : process.env.PAYPAL_API_BASE_SANDBOX!;
 
     const res = await fetch(
       `${PAYPAL_API_BASE}/v2/checkout/orders/${orderID}/capture`,
