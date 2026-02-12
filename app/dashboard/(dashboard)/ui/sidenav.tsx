@@ -26,7 +26,7 @@ export default function SideNav() {
         console.error("Logout error:", error.message);
         return;
       }
-      console.log("User logged out successfully");
+      // console.log("User logged out successfully");
       router.push('/auth/login');
     } catch (err) {
       console.error("Unexpected logout error:", err);
@@ -80,7 +80,7 @@ export default function SideNav() {
         </Link>
 
         {/* Navigation */}
-        <div className="flex-1 overflow-y-auto">
+        <div onClick={() => setIsOpen(false)} className="flex-1 overflow-y-auto">
           <NavLinks />
         </div>
 
@@ -98,7 +98,7 @@ export default function SideNav() {
 
         {/* Mobile close */}
         <button
-          className="absolute top-4 right-4 md:hidden p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+          className="absolute top-4 left-4 md:hidden p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition"
           onClick={() => setIsOpen(false)}
         >
           <XMarkIcon className="w-6 h-6 text-gray-800 dark:text-white" />

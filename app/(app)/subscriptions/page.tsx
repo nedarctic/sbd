@@ -16,7 +16,7 @@ async function UserClaims() {
   const { data, error } = await supabase.auth.getClaims();
 
   if (error || !data?.claims) {
-    console.log('User not logged in');
+    // console.log('User not logged in');
     redirect("/auth/login");
   }
 
@@ -38,7 +38,7 @@ async function getSubscriptionDetails(): Promise<StoredSubscription | null> {
   let subscriptions: StoredSubscription | null;
 
   if (!user) {
-    console.log('no user was found');
+    // console.log('no user was found');
     return null;
   } else {
     subscriptions = await GetSubscription(user.id);

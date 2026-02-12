@@ -13,7 +13,7 @@ export async function GET(
                 const subscriptionId = (await params).id;
 
                 const accessToken = await getPayPalAccessToken();
-                console.log("access token in subscription route:", accessToken);
+                // console.log("access token in subscription route:", accessToken);
 
                 const response = await fetch(
                         `${PAYPAL_API}/v1/billing/subscriptions/${subscriptionId}`,
@@ -27,7 +27,7 @@ export async function GET(
                 );
 
                 const data = await response.json();
-                console.log("Subscription details response:", data);
+                // console.log("Subscription details response:", data);
 
                 if (!response.ok) {
                         return NextResponse.json(
@@ -79,7 +79,7 @@ export async function GET(
 
                 // Store subscription in Supabase
                 const storedSubscription = await StoreSubscription(supabase, mapped);
-                console.log("Stored subscription:", storedSubscription);
+                // console.log("Stored subscription:", storedSubscription);
 
                 const planName = getPayPalPlanName(data.plan_id);
 
@@ -103,7 +103,7 @@ export async function GET(
                         createTime: data.create_time,
                         updateTime: data.update_time,
                 };
-                console.log("Returning subscription details:", subscriptionDetails);
+                // console.log("Returning subscription details:", subscriptionDetails);
                 return NextResponse.json(subscriptionDetails);
         } catch (error) {
                 console.error("Error fetching subscription details:", error);

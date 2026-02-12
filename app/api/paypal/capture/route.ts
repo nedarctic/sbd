@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     }
 
     const data = await res.json();
-    console.log("PayPal capture success:", data);
+    // console.log("PayPal capture success:", data);
 
     return NextResponse.json({ success: true, data });
   } catch (err) {

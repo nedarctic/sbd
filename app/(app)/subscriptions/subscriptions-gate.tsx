@@ -52,19 +52,19 @@ export default function SubscriptionsPage({userDetails, subscriptionDetails, isA
   }
 
   // get the user id since they are logged in at this point
-  console.log("User ID in subscription page:", user.id);
+  // console.log("User ID in subscription page:", user.id);
 
   // get the subscription details of the user
   const subscription = subscriptionDetails;
 
   // log the subscription details
-  console.log("subscription details at subscription page:", subscription);
+  // console.log("subscription details at subscription page:", subscription);
 
   // redirect the user to the dashboard if they are subscribed already
   const isSubscribed = isActiveSubscription;
   
   if (isSubscribed) {
-    console.log("User has an active subscription. Redirecting to dashboard.");
+    // console.log("User has an active subscription. Redirecting to dashboard.");
     redirect("/dashboard");
   }
 
