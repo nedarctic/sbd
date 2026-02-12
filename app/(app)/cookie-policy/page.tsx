@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { oswald } from '@/components/ui/fonts';
+import Link from 'next/link'
 
 export default function CookiePolicy() {
   const [currentYear, setCurrentYear] = useState<number | null>(null);
@@ -383,7 +384,7 @@ export default function CookiePolicy() {
 
                     <div className="bg-gray-700 p-6 rounded border border-gray-600">
                       <p className="font-bold text-lg text-[#E8B85F] mb-2">ScholarBrood</p>
-                      <p className="mb-2">Email: <a href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</a></p>
+                      <p className="mb-2">Email: <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link></p>
                       <p className="mb-2">Phone: (+1) 843-699-6020</p>
                       <p>Address: Myrtle Beach, SC 29572, United States</p>
                     </div>

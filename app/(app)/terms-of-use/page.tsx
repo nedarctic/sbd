@@ -2,6 +2,7 @@
 
 import { oswald } from '@/components/ui/fonts';
 import { useState, useEffect } from 'react';
+import Link from 'next/link'
 
 export default function TermsOfService() {
   const [currentYear, setCurrentYear] = useState<number | null>(null);
@@ -234,7 +235,7 @@ export default function TermsOfService() {
                 </h2>
                 <div className="space-y-4">
                   <p>
-                    For questions, concerns, or clarifications regarding these Terms of Use, please contact us at <a href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</a>. By using ScholarBrood's website and services, you acknowledge that you have read, understood, and agreed to these Terms of Use in full.
+                    For questions, concerns, or clarifications regarding these Terms of Use, please contact us at <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>. By using ScholarBrood's website and services, you acknowledge that you have read, understood, and agreed to these Terms of Use in full.
                   </p>
                 </div>
               </section>

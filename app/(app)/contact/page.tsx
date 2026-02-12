@@ -13,6 +13,7 @@ import {
     createContactAction,
     type ContactFormState,
 } from "@/actions/createContact";
+import Link from 'next/link'
 
 const initialState: ContactFormState = {};
 
@@ -111,12 +112,12 @@ export default function ContactPage() {
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-4">
                                         <Mail className="w-6 h-6 text-[#E8B85F]" />
-                                        <a
+                                        <Link
                                             href="mailto:info@scholarbrood.com"
                                             className={`${oswald.className} text-lg text-gray-700 dark:text-gray-300 hover:text-[#E8B85F] transition`}
                                         >
                                             info@scholarbrood.com
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <Phone className="w-6 h-6 text-[#E8B85F]" />

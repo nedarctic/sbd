@@ -1,29 +1,32 @@
-"use server";
+"use server"
 
+import { storeSubscription } from "@/lib/db/storeSubscribtion";
 import { createSubscription } from "@/lib/email/createSubscription";
 import { revalidatePath } from "next/cache";
 
 export type SubscriptionFormState = {
-    success?: boolean;
-    error?: string;
+  success?: boolean;
+  error?: string;
 };
 
 export async function createSubscriptionAction(
-    _prevState: SubscriptionFormState,
-    formData: FormData
+  _prevState: SubscriptionFormState,
+  formData: FormData
 ): Promise<SubscriptionFormState> {
-    const email = formData.get("email");
+  const email = formData.get("email");
 
-    if (typeof email !== "string" || !email.includes("@")) {
-        throw new Error("Invalid email address");
-    }
+  if (typeof email !== "string" || !email.includes("@")) {
+    return { error: "Invalid email address" };
+  }
 
-    try {
-        await createSubscription(email);
-        revalidatePath("/contact");
+  try {
+    await storeSubscription(email); // store in DB
+    await createSubscription(email); // send confirmation email
 
-        return { success: true };
-    } catch (error) {
-        return { error: "Failed to subscribe. Please try again." };
-    }
+    revalidatePath("/contact");
+
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message ?? "Failed to subscribe." };
+  }
 }

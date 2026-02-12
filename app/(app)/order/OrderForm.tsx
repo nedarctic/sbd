@@ -10,6 +10,7 @@ import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { ArrowRight, Paperclip, X } from "lucide-react";
 import { oswald } from "@/components/ui/fonts";
 import PayPalButton from "@/components/dashboard/PayPalButton";
+import { useRouter } from 'next/navigation'
 
 export const dynamic = "force-dynamic"
 
@@ -19,58 +20,85 @@ const SERVICE_PRICING = {
     "Academic Writing Support": { amount: 10, unit: "page" },
     "Research Assistance (Projects, Thesis, Dissertations)": { amount: 12, unit: "page" },
     "Publication & Journal Support": { amount: 200, unit: "flat" },
-    "Editing, Review & Proofreading": { amount: 10, unit: "flat" },
+    "Editing, Review & Proofreading": { amount: 10, unit: "page" },
     "General Consultation": { amount: 0, unit: "service" },
 } as const;
 
 export default function OrderForm() {
 
+    const router = useRouter();
+
+    // action for form handling
     const [state, formAction, isPending] = useActionState(
         createOrderAction,
         {}
     );
-    
+
+    // get service from search params
     const searchParams = useSearchParams();
     const incomingService = searchParams.get("service") || "Custom Service";
     const isPreSelected = !!searchParams.get("service");
 
+    // assign selected service to varible otherwise default to general consultation
     const [selectedServiceType, setSelectedServiceType] = useState<string>(
         isPreSelected ? incomingService : "General Consultation"
     );
+
+    // store form data
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [modalState, setModalState] = useState<"loading" | "success" | "error" | null>(null);
     const [modalMessage, setModalMessage] = useState("");
+    const [pages, setPages] = useState<number>(0);
 
+    // get payment status and data
     const [paymentConfirmed, setPaymentConfirmed] = useState(false);
     const [paypalOrderId, setPaypalOrderId] = useState<string | null>(null);
 
+    // update state variables on successful payment
     const handlePaymentSuccess = (orderId: string) => {
         setPaymentConfirmed(true);
         setPaypalOrderId(orderId);
     };
 
-    const requiresPayment =
-        SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING]?.amount > 0;
-
     useEffect(() => {
+
+        // when form is being submitted
         if (isPending) {
             setModalState("loading");
             setModalMessage("Submitting your request...");
         }
 
+        // on successful submission
         if (state?.success) {
             setModalState("success");
             setModalMessage("Your request has been submitted successfully!");
             setSelectedFiles([]);
             setTimeout(() => setModalState(null), 5000);
+            router.refresh();
+            router.push("/");
         }
 
+        // on failed submission
         if (state?.error) {
             setModalState("error");
             setModalMessage(state.error);
             setTimeout(() => setModalState(null), 6000);
         }
     }, [state, isPending]);
+
+    const pricing =
+        SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING];
+
+    let computedAmount = 0;
+
+    if (pricing.unit === "flat") {
+        computedAmount = pricing.amount;
+    } else if (pricing.unit === "page") {
+        computedAmount = pricing.amount * pages;
+    }
+
+    // identify services that require payment
+    const requiresPayment = computedAmount > 0;
 
 
     return (
@@ -116,6 +144,7 @@ export default function OrderForm() {
                     <label className={`${oswald.className} text-white block mb-2 font-semibold`}>Full Name</label>
                     <input name="name" type="text" required className="w-full p-4 rounded-xl bg-white/10 border border-white/30" />
                 </div>
+
                 <div className="mb-6">
                     <label className={`${oswald.className} text-white block mb-2 font-semibold`}>Email</label>
                     <input name="email" type="email" required className="w-full p-4 rounded-xl bg-white/10 border border-white/30" />
@@ -124,8 +153,21 @@ export default function OrderForm() {
                 {/* Project details */}
                 <div className="mb-8">
                     <label className={`${oswald.className} text-white block mb-2 font-semibold`}>Project Details</label>
-                    <textarea name="details" rows={6} required className="w-full p-4 rounded-xl bg-white/10 border border-white/30" />
+                    <textarea placeholder="Describe the order in details" name="details" rows={6} className="w-full p-4 rounded-xl bg-white/10 border border-white/30" />
                 </div>
+
+                {/* Number of pages */}
+                {pricing.unit == "page" && (<div className="mb-8">
+                    <label className={`${oswald.className} text-white block mb-2 font-semibold`}>Page(s)</label>
+                    <input
+                        name="pages"
+                        type="number"
+                        min={0}
+                        onChange={(e) => setPages(Number(e.target.value))}
+                        className="w-full p-4 rounded-xl bg-white/10 border border-white/30"
+                        placeholder="Enter number of pages"
+                    />
+                </div>)}
 
                 {/* File upload */}
                 <div className="mb-8">
@@ -181,9 +223,9 @@ export default function OrderForm() {
                     )}
 
                     {/* PayPal Button */}
-                    {SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING]?.amount > 0 && (
+                    {requiresPayment && (
                         <PayPalButton
-                            amount={SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING].amount}
+                            amount={computedAmount}
                             onSuccess={handlePaymentSuccess}
                         />
                     )}

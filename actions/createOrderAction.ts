@@ -15,54 +15,87 @@ export async function createOrderAction(
   formData: FormData
 ): Promise<OrderFormState> {
   try {
-    // --- Extract form fields ---
+    // --- Extract raw values ---
     const name = formData.get("name");
     const email = formData.get("email");
     const service = formData.get("service");
-    const details = formData.get("details");
-    const files = formData.getAll("files") as File[];
+    const details = formData.get("details"); // optional
+    const pagesRaw = formData.get("pages");
     const paypalOrderId = formData.get("paypalOrderId");
+    const files = formData.getAll("files") as File[];
 
-    // --- Validate inputs ---
+    // --- Basic validation ---
     if (
       typeof name !== "string" ||
       typeof email !== "string" ||
-      typeof service !== "string" ||
-      typeof details !== "string" ||
-      typeof paypalOrderId !== "string"
+      typeof service !== "string"
     ) {
       return { error: "Invalid form submission." };
     }
 
-    // --- Check service exists in pricing table ---
+    // --- Validate service ---
     type ServiceKey = keyof typeof SERVICE_PRICING;
     if (!(service in SERVICE_PRICING)) {
       return { error: "Unknown service selected." };
     }
+
     const pricing = SERVICE_PRICING[service as ServiceKey];
 
-    // --- Verify PayPal payment ---
-    const order = await verifyPaypalOrder(paypalOrderId);
-    if (!order) {
-      return { error: "Payment could not be verified." };
+    // --- Parse pages safely ---
+    let pages = 0;
+
+    if (typeof pagesRaw === "string" && pagesRaw.trim() !== "") {
+      pages = Number(pagesRaw);
+      if (Number.isNaN(pages) || pages < 0) {
+        return { error: "Invalid number of pages." };
+      }
     }
 
-    // --- Price & currency validation ---
-    if (order.amount !== pricing.amount || order.currency !== "USD") {
-      return { error: "Payment amount mismatch." };
+    // --- Calculate expected amount ---
+    let expectedAmount = 0;
+
+    if (pricing.unit === "flat") {
+      expectedAmount = pricing.amount;
+    } else if (pricing.unit === "page") {
+      if (pages <= 0) {
+        return { error: "Pages must be greater than 0." };
+      }
+      expectedAmount = pricing.amount * pages;
+    } else {
+      // General consultation
+      expectedAmount = 0;
     }
 
-    // --- Payment is valid, send email ---
+    // --- If payment required, verify PayPal ---
+    if (expectedAmount > 0) {
+      if (typeof paypalOrderId !== "string") {
+        return { error: "Payment is required." };
+      }
+
+      const order = await verifyPaypalOrder(paypalOrderId);
+      if (!order) {
+        return { error: "Payment could not be verified." };
+      }
+
+      if (
+        Number(order.amount) !== expectedAmount ||
+        order.currency !== "USD"
+      ) {
+        return { error: "Payment amount mismatch." };
+      }
+    }
+
+    // --- Send email ---
     await sendOrderEmail({
       name,
       email,
       service,
-      details,
-      files,
-      paypalOrderId, // include order id in email
+      details: typeof details === "string" ? details : "",
+      pages,
+      files: files ?? [],
+      paypalOrderId: typeof paypalOrderId === "string" ? paypalOrderId : undefined,
     });
 
-    // --- Revalidate cache if needed ---
     revalidatePath("/order");
 
     return { success: true };

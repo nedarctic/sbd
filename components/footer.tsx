@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
-import { FaFacebook, FaLinkedin, FaInstagram, FaYoutube, FaReddit, FaTumblr } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaInstagram, FaYoutube, FaReddit, FaTumblr, FaTiktok } from "react-icons/fa";
 import { oswald } from "@/components/ui/fonts";
 import { useState, useEffect } from "react";
 
@@ -18,19 +18,21 @@ export default function Footer() {
     { label: "About Us", href: "/about" },
     { label: "Our Services", href: "/services" },
     { label: "Order Request Form", href: "/order" },
-    { label: "Resources", href: "/resources" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Contact Us", href: "/contact" },
   ];
 
   const policyLinks = [{ label: "Privacy Policy", path: "/privacy-policy" }, { label: "Terms of Use", path: "/terms-of-use" }, { label: "Cookie Policy", path: "/cookie-policy" }, { label: "Refund Policy", path: "/refund-policy" }];
 
   const socialLinks = [
-    { Icon: FaFacebook, href: "https://facebook.com/scholarbrood" },
-    { Icon: FaLinkedin, href: "https://www.linkedin.com/in/nicholas-otieno-28a25939a/" },
+    { Icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61587677614993" },
+    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/scholarbrood/?viewAsMember=true." },
     { Icon: FaInstagram, href: "https://www.instagram.com/scholarbrood/" },
     { Icon: FaYoutube, href: "https://www.youtube.com/@ScholarBrood" },
     { Icon: FaReddit, href: "https://www.reddit.com/user/scholarbrood/" },
     { Icon: FaTumblr, href: "https://scholarbrood.tumblr.com/" },
+    { Icon: FaTiktok, href: "https://www.tiktok.com/@scholarbrood?is_from_webapp=1&sender_device=pc" }
   ];
 
   return (
@@ -47,12 +49,12 @@ export default function Footer() {
               <div className="space-y-3 text-gray-400">
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#E8B85F] flex-shrink-0" />
-                  <a
+                  <Link
                     href="mailto:info@scholarbrood.com"
                     className={`${oswald.className} hover:text-[#E8B85F] transition break-words`}
                   >
                     info@scholarbrood.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-[#E8B85F] flex-shrink-0" />

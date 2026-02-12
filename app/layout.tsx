@@ -7,7 +7,7 @@ const defaultUrl = process.env.NODE_ENV === "production" ? `https://${process.en
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Academic Writing, Research Support & Publication Services",
+  title: "ScholarBrood - Academic Writing, Research Support & Publication Services",
   description:
     "ScholarBrood offers professional academic writing, research guidance, and publication processing services for students and researchers worldwide. High-quality, plagiarism-free work, expert mentorship, fast delivery, and journal-ready manuscript support.",
   keywords: [
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "ScholarBrood", url: "https://scholarbrood.com" }],
   openGraph: {
-    title: "ScholarBrood - Academic Writing, Research & AI Skills Training",
+    title: "ScholarBrood - Expert Academic Support for Students & Researchers.",
     description:
-      "Expert-led tutorials, mentorship, and AI skills training for students and professionals.",
+      "ScholarBrood provides professional academic writing, editing, research support, and publication processing for students and researchers worldwide.",
     url: "https://scholarbrood.com",
     siteName: "ScholarBrood",
     type: "website",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ScholarBrood - Academic Writing, Research & AI Skills Training",
+    title: "ScholarBrood - Academic Writing, Research Support & Publication Services",
     description:
-      "Expert-led tutorials, mentorship, and AI skills training for students and professionals.",
+      "ScholarBrood offers professional academic writing, research guidance, and publication processing services for students and researchers worldwide. High-quality, plagiarism-free work, expert mentorship, fast delivery, and journal-ready manuscript support.",
     images: ["https://scholarbrood.com/og-image.png"],
     site: "@ScholarBrood",
   },

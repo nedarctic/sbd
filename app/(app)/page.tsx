@@ -100,52 +100,54 @@ export default function Home() {
           transition-colors duration-500`}
       >
         {/* HERO */}
-        <section className="relative pt-[110px] pb-[55px] min-h-screen sm:min-h-[600px] sm:max-h-[800px] flex items-center justify-center px-5 sm:px-8 overflow-hidden">
-          <img
-            src="/A student enjoying our consultation.jpg"
-            alt="A student enjoying our consultation"
-            className="absolute inset-0 w-full h-full object-cover z-0"
-          />
-          <div className="absolute inset-0 bg-black/60 z-0" />
+        <section className="h-screen w-full">
+          <div className="relative pt-[110px] pb-[55px] h-full flex items-center justify-center px-5 sm:px-8 overflow-hidden">
+            <img
+              src="/A student enjoying our consultation.jpg"
+              alt="A student enjoying our consultation"
+              className="absolute inset-0 w-full h-full object-cover z-0"
+            />
+            <div className="absolute inset-0 bg-black/60 z-0" />
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative z-10 max-w-5xl text-center px-4"
-          >
-            <h1
-              className={`${oswald.className} text-2xl sm:text-5xl font-bold text-white leading-tight`}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative z-10 max-w-5xl text-center px-4"
             >
-              Expert Academic Writing, Editing, Research, and Publication Support for Students and Researchers
-            </h1>
-
-            <p className={`${oswald.className} text-md sm:text-xl text-white/90 mt-6 leading-relaxed`}>
-              Get high-quality essays, proposals, theses, journal manuscripts, data analysis, and publication support from experienced academic professionals
-            </p>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                // to be changed back to contact
-                href="/about"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className={`${oswald.className} px-6 py-4 sm:px-10 sm:py-5 bg-[#E8B85F] text-[#1C1C30] rounded-full text-md sm:text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3`}
+              <h1
+                className={`${oswald.className} text-2xl sm:text-5xl font-bold text-white leading-tight`}
               >
-                Get Expert Help
-                <ArrowRight className="w-5 h-5" />
-              </motion.a>
+                Expert Academic Support for Students & Researchers.
+              </h1>
 
-              <motion.a
-                href="/services"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className={`${oswald.className} px-6 sm:px-10 py-4 sm:py-5 border-2 border-[#E8B85F] text-[#E8B85F] rounded-full text-md sm:text-lg font-semibold hover:bg-[#E8B85F] hover:text-[#1C1C30] transition-all duration-300 flex items-center justify-center`}
-              >
-                View Our Services
-              </motion.a>
-            </div>
-          </motion.div>
+              <p className={`${oswald.className} text-md sm:text-xl text-white/90 mt-6 leading-relaxed`}>
+                Get high-quality essays, proposals, theses, journal manuscripts, data analysis, and publication support from experienced academic professionals
+              </p>
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.a
+                  // to be changed back to contact
+                  href="/contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${oswald.className} px-6 py-4 sm:px-10 sm:py-5 bg-[#E8B85F] text-[#1C1C30] rounded-full text-md sm:text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3`}
+                >
+                  Get Expert Help
+                  <ArrowRight className="w-5 h-5" />
+                </motion.a>
+
+                <motion.a
+                  href="/services"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${oswald.className} px-6 sm:px-10 py-4 sm:py-5 border-2 border-[#E8B85F] text-[#E8B85F] rounded-full text-md sm:text-lg font-semibold hover:bg-[#E8B85F] hover:text-[#1C1C30] transition-all duration-300 flex items-center justify-center`}
+                >
+                  View Our Services
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         {/* OUR ACADEMIC SERVICES (Card Grid) */}

@@ -10,7 +10,8 @@ export default function AboutClient() {
     <main className={`${oswald.className} min-h-screen bg-white dark:bg-[#1C1C30] text-gray-900 dark:text-gray-100 transition-colors duration-500`}>
 
       {/* Hero */}
-      <section className="relative min-h-screen sm:min-h-[600px] sm:max-h-[800px] flex items-center justify-center px-5 sm:px-8 overflow-hidden">
+      <section className="h-screen w-full">
+      <div className="relative h-full flex items-center justify-center px-5 sm:px-8 overflow-hidden">
         <img
           src="/Professional Academic Team.jpg"
           alt="Professional Academic Team"
@@ -33,12 +34,13 @@ export default function AboutClient() {
           </p>
           <Link
             // to be changed back to contact
-            href="/about"
+            href="/contact"
             className="px-8 py-4 bg-[#E8B85F] text-[#1C1C30] font-bold text-lg rounded-full hover:bg-[#d4a44e] hover:scale-105 transition-all duration-300 shadow-xl flex items-center gap-3"
           >
             Get in Touch <ArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
+      </div>
       </section>
 
       {/* Who We Are */}
@@ -221,7 +223,7 @@ export default function AboutClient() {
               </p>
               <Link
                 // to be changed back to contact
-                href="/about"
+                href="/contact"
                 className="inline-flex items-center justify-center px-10 sm:px-12 py-5 sm:py-6 bg-white text-[#1C1C30] text-lg sm:text-xl font-bold rounded-full shadow-2xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 gap-3 whitespace-nowrap"
               >
                 Get in Touch <ArrowRight className="w-6 h-6" />

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { contactSchema } from "@/lib/validations/contactSchema";
 import { createContact } from "@/lib/email/createContact";
+import { storeContact } from "@/lib/db/storeContact";
 
 export type ContactFormState = {
   success?: boolean;
@@ -26,6 +27,7 @@ export async function createContactAction(
 
   try {
     await createContact(parsedData.data);
+    await storeContact(parsedData.data);
     revalidatePath("/contact");
 
     return { success: true };

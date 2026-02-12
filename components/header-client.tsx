@@ -10,7 +10,7 @@ import MobileDrawer from "./mobile-drawer";
 
 export const dynamic = "force-dynamic"
 
-export default function HeaderClient({authSlot}: {authSlot: React.ReactNode}) {
+export default function HeaderClient({ authSlot }: { authSlot: React.ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
 
 
@@ -20,15 +20,15 @@ export default function HeaderClient({authSlot}: {authSlot: React.ReactNode}) {
         { label: "Our Services", href: "/services" },
         { label: "Tutorials", href: "/tutorials" },
         { label: "Dashboard", href: "/dashboard" },
-        // { label: "Blogs & Insight", href: "/blog" },
-        { label: "Contact", href: "/contact" },
+        { label: "Blogs", href: "/blogs" },
+        { label: "Contact Us", href: "/contact" },
     ];
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/80 dark:bg-[#1C1C30]/90 border-b border-gray-200/50 dark:border-gray-800/50 shadow-lg">
             <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
                 {/* Logo */}
-                <div className="flex gap-4 justify-end items-end">
+                <Link href="/" className="flex gap-4 justify-end items-end">
                     <Image
                         src="/logo/scholarbrood-light-logo.svg"
                         alt="Header logo"
@@ -44,17 +44,16 @@ export default function HeaderClient({authSlot}: {authSlot: React.ReactNode}) {
                         className="hidden dark:block"
                     />
                     <div className="flex flex-col">
-                        <Link
-                            href="/"
+                        <div
                             className={`${oswald.className} text-xl sm:text-3xl font-bold tracking-tight bg-gradient-to-r from-[#E8B85F] to-[#d4a44e] bg-clip-text text-transparent`}
                         >
                             ScholarBrood
-                        </Link>
+                        </div>
                         <p className={`${oswald.className} text-[10px] text-black dark:text-white`}>
                             Learn, Pursue & Grow Academic Excellence!
                         </p>
                     </div>
-                </div>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className="hidden lg:flex items-center gap-10">

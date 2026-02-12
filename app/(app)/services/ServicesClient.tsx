@@ -10,45 +10,46 @@ export default function ServicesClient() {
     <main className={`${oswald.className} min-h-screen bg-white dark:bg-[#1C1C30] text-gray-900 dark:text-gray-100 transition-colors duration-500`}>
 
       {/* Hero with Image */}
+      <section className="h-screen w-full">
+        <section className="relative h-full flex items-center justify-center px-5 sm:px-8 pt-20 overflow-hidden">
+          <img
+            src="/Research is the primary tool in ScholarBrood.jpg"
+            alt="Hero Background"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+          <div className="absolute inset-0 bg-black/50 z-0" />
 
-      <section className="relative min-h-screen sm:min-h-[600px] sm:max-h-[800px] flex items-center justify-center px-5 sm:px-8 pt-20 overflow-hidden">
-        <img
-          src="/Research is the primary tool in ScholarBrood.jpg"
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-        <div className="absolute inset-0 bg-black/50 z-0" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="relative z-10 text-center px-6 max-w-6xl mx-auto text-white flex flex-col items-center"
-        >
-          <h1 className={`${oswald.className} text-2xl sm:text-5xl font-bold mb-8 tracking-tight leading-tight`}>
-            Achieve Academic Excellence With Expert Writing & Research Support
-          </h1>
-          <p className={`${oswald.className} text-md sm:text-xl max-w-4xl mx-auto leading-relaxed px-4 mb-12`}>
-            From academic papers to full research projects and journal publication — ScholarBrood gives you the professional support you need to succeed
-          </p>
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Link
-            // to be changed back to contact
-              href="/about"
-              className={`${oswald.className} px-6 py-4 sm:px-10 sm:py-5 bg-[#E8B85F] text-[#1C1C30] font-bold text-md sm:text-lg rounded-full hover:bg-[#d4a44e] hover:scale-105 transition-all duration-300 shadow-xl flex items-center gap-3`}
-            >
-              Get Academic Help Now <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              // to be changed back to contact
-              href="/about"
-              className={`${oswald.className} px-6 py-4 sm:px-10 sm:py-5 border-2 border-[#E8B85F] text-white font-bold text-md sm:text-lg rounded-full hover:bg-[#E8B85F]/20 transition-all duration-300`}
-            >
-              Request Research Support
-            </Link>
-          </div>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+            className="relative z-10 text-center px-6 max-w-6xl mx-auto text-white flex flex-col items-center"
+          >
+            <h1 className={`${oswald.className} text-2xl sm:text-5xl font-bold mb-8 tracking-tight leading-tight`}>
+              Achieve Academic Excellence With Expert Writing & Research Support
+            </h1>
+            <p className={`${oswald.className} text-md sm:text-xl max-w-4xl mx-auto leading-relaxed px-4 mb-12`}>
+              From academic papers to full research projects and journal publication — ScholarBrood gives you the professional support you need to succeed
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <Link
+                // to be changed back to contact
+                href="/order"
+                className={`${oswald.className} px-6 py-4 sm:px-10 sm:py-5 bg-[#E8B85F] text-[#1C1C30] font-bold text-md sm:text-lg rounded-full hover:bg-[#d4a44e] hover:scale-105 transition-all duration-300 shadow-xl flex items-center gap-3`}
+              >
+                Get Academic Help Now <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                // to be changed back to contact
+                href="/contact"
+                className={`${oswald.className} px-6 py-4 sm:px-10 sm:py-5 border-2 border-[#E8B85F] text-white font-bold text-md sm:text-lg rounded-full hover:bg-[#E8B85F]/20 transition-all duration-300`}
+              >
+                Request Research Support
+              </Link>
+            </div>
+          </motion.div>
+        </section>
       </section>
 
       {/* Services Sections */}
@@ -234,7 +235,7 @@ export default function ServicesClient() {
           className="max-w-5xl mx-auto text-center"
         >
           <div className="relative p-10 sm:p-16 rounded-3xl bg-[#E8B85F] shadow-2xl overflow-hidden text-center">
-              <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0 bg-black/10" />
             <div className="relative z-10">
               <h2 className={`${oswald.className} text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight`}>
                 Start Your Academic Journey With Confidence
@@ -246,14 +247,14 @@ export default function ServicesClient() {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
                 <Link
                   // to be changed back to contact
-              href="/about"
+                  href="/order?service=General Consultation"
                   className={`${oswald.className} w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 dark:bg-[#1C1C30] bg-[#1C1C30] text-[#E8B85F] text-base sm:text-lg md:text-xl font-bold rounded-full hover:bg-[#1C1C30]/90 hover:scale-105 shadow-2xl transition-all duration-300`}
                 >
                   Request Expert Help Today
                 </Link>
                 <Link
                   // to be changed back to contact
-              href="/about"
+                  href="/order?service=Publication & Journal Support"
                   className={`${oswald.className} w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 md:border-4 border-[#1C1C30] text-white text-base sm:text-lg md:text-xl font-bold rounded-full dark:hover:bg-[#1C1C30] hover:bg-[#1C1C30] hover:text-[#E8B85F] transition-all duration-300`}
                 >
                   Start Publication Processing

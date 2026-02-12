@@ -7,6 +7,7 @@ type OrderPayload = {
   details: string;
   files: File[];
   paypalOrderId?: string;
+  pages: number;
 };
 
 const transporter = createTransporter({
@@ -38,6 +39,7 @@ export async function sendOrderEmail(data: OrderPayload) {
         ${data.paypalOrderId ? `<p><strong>PayPal Order ID:</strong> ${data.paypalOrderId}</p>` : ""}
         <hr />
         <p>${data.details.replace(/\n/g, "<br />")}</p>
+        <p><strong>Service:</strong> ${data.pages}</p>
       </div>
     `,
     attachments,
