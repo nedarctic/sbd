@@ -44,7 +44,7 @@ const PayPalButton = ({ amount, onSuccess }: Props) => {
 
     return (
         <PayPalScriptProvider
-            options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX! }}
+            options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! }}
         >
             <div className="mt-6">
                 <PayPalButtons
