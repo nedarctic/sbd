@@ -4,7 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import PayPalProvider from "@/components/PayPalProvider";
 import SubscriptionButton from "@/components/SubscriptionButton";
-import { SUBSCRIPTION_PLANS } from "@/config/paypal";
+import { SUBSCRIPTION_PLANS } from "@/config/paypal.client";
 import { ArrowRight, LogIn } from "lucide-react";
 import { oswald } from "@/components/ui/fonts";
 import type { User } from "@supabase/supabase-js";

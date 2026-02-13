@@ -1,10 +1,11 @@
-import { PayPalConfig, SubscriptionPlan } from "@/types/paypal";
+import type { PayPalConfig, SubscriptionPlan, PAYPAL_MODE } from "@/types/paypal";
 
-const PAYPAL_MODE = "live";
+const PAYPAL_MODE: PAYPAL_MODE = "live";
 
-export const PAYPAL_CONFIG: PayPalConfig = {
-	clientId: PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,
-	currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || "USD",
+export const PAYPAL_CLIENT_CONFIG: PayPalConfig = {
+	clientId: PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,	
+  paypal_base: PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_API_BASE_LIVE! : process.env.NEXT_PUBLIC_PAYPAL_API_BASE_SANDBOX!,
+  currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || "USD",
 	environment: PAYPAL_MODE === "live" ? "production" : "sandbox",
 };
 

@@ -10,6 +10,7 @@ export interface PayPalConfig {
 	clientId: string;
 	currency: string;
 	environment: "sandbox" | "production";
+	paypal_base: string;
 }
 
 // PayPal Webhooks
@@ -210,3 +211,5 @@ export interface SupabaseJwtPayload {
   session_id: string;
   is_anonymous: boolean;
 }
+
+export type PAYPAL_MODE = "live" | "sandbox";

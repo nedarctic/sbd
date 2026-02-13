@@ -1,9 +1,8 @@
-const PAYPAL_MODE = "live";
+import { PAYPAL_SERVER_CONFIG } from "@/config/paypal.server";
 
-const clientId = PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!;
-const clientSecret = PAYPAL_MODE === "live" ? process.env.PAYPAL_CLIENT_SECRET! : process.env.PAYPAL_CLIENT_SECRET_SANDBOX!;
-
-export const PAYPAL_API = PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
+const clientId = PAYPAL_SERVER_CONFIG.paypal_id;
+const clientSecret = PAYPAL_SERVER_CONFIG.paypal_secret;
+const PAYPAL_API = PAYPAL_SERVER_CONFIG.paypal_base;
 
 export async function getPayPalAccessToken() {
 

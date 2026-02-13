@@ -28,10 +28,10 @@ export default function Footer() {
   const socialLinks = [
     { Icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61587677614993" },
     { Icon: FaLinkedin, href: "https://www.linkedin.com/company/scholarbrood/?viewAsMember=true." },
-    { Icon: FaInstagram, href: "https://www.instagram.com/scholarbrood/" },
+    // { Icon: FaInstagram, href: "https://www.instagram.com/scholarbrood/" },
     { Icon: FaYoutube, href: "https://www.youtube.com/@ScholarBrood" },
-    { Icon: FaReddit, href: "https://www.reddit.com/user/scholarbrood/" },
-    { Icon: FaTumblr, href: "https://scholarbrood.tumblr.com/" },
+    // { Icon: FaReddit, href: "https://www.reddit.com/user/scholarbrood/" },
+    // { Icon: FaTumblr, href: "https://scholarbrood.tumblr.com/" },
     { Icon: FaTiktok, href: "https://www.tiktok.com/@scholarbrood?is_from_webapp=1&sender_device=pc" }
   ];
 
@@ -110,7 +110,7 @@ export default function Footer() {
           </div>
 
           {/* Social Icons */}
-          <div className="order-2 md:order-3 flex justify-center md:justify-end">
+          <div className="order-2 md:order-3 flex justify-center md:justify-center">
             <div className="flex gap-5">
               {socialLinks.map(({ Icon, href }, index) => (
                 <a

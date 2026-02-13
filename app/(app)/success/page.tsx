@@ -4,14 +4,13 @@ import { getPayPalPlanName } from "@/lib/paypal/paypal";
 import { UpdateSubscription } from "@/lib/paypal/subscriptions";
 import type { StoredSubscription } from "@/types/subscription";
 import { GetSubscription, StoreSubscription } from "@/lib/paypal/subscriptions";
-import { getPayPalAccessToken } from "@/lib/paypal/paypal"; 
+import { getPayPalAccessToken } from "@/lib/paypal/paypal";
+import { PAYPAL_CLIENT_CONFIG } from "@/config/paypal.client";
 
 export const dynamic = "force-dynamic";
 
 async function fetchSubscriptionDetails(subscriptionId: string, accessToken: string) {
-    const PAYPAL_MODE = "live";
-
-    const API_BASE = PAYPAL_MODE === "live" ? process.env.PAYPAL_API_BASE_LIVE : process.env.PAYPAL_API_BASE_SANDBOX;
+const API_BASE = PAYPAL_CLIENT_CONFIG.paypal_base;
 
     const response = await fetch(
         `${API_BASE}/v1/billing/subscriptions/${subscriptionId}`,

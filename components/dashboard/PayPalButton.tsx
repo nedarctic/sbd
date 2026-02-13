@@ -2,6 +2,7 @@
 
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { useState } from 'react';
+import { PAYPAL_CLIENT_CONFIG } from '@/config/paypal.client';
 
 type Props = {
     amount: number;
@@ -44,7 +45,7 @@ const PayPalButton = ({ amount, onSuccess }: Props) => {
 
     return (
         <PayPalScriptProvider
-            options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! }}
+            options={{ clientId: PAYPAL_CLIENT_CONFIG.clientId }}
         >
             <div className="mt-6">
                 <PayPalButtons

@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PAYPAL_API, getPayPalAccessToken } from "@/lib/paypal/paypal";
+import { getPayPalAccessToken } from "@/lib/paypal/paypal";
 import { createClient } from "@/lib/supabase/server";
 import { StoredSubscription } from "@/types/subscription";
 import { StoreSubscription } from "@/lib/paypal/subscriptions";
 import { getPayPalPlanName } from "@/lib/paypal/paypal";
+import { PAYPAL_SERVER_CONFIG } from "@/config/paypal.server";
 
 export async function GET(
         request: NextRequest,
@@ -16,7 +17,7 @@ export async function GET(
                 // console.log("access token in subscription route:", accessToken);
 
                 const response = await fetch(
-                        `${PAYPAL_API}/v1/billing/subscriptions/${subscriptionId}`,
+                        `${PAYPAL_SERVER_CONFIG.paypal_base}/v1/billing/subscriptions/${subscriptionId}`,
                         {
                                 method: "GET",
                                 headers: {
