@@ -52,14 +52,6 @@ const PayPalButton = ({ amount, onSuccess }: Props) => {
                     createOrder={createOrder}
                     onApprove={onApprove}
                     onError={() => setError("PayPal error occurred")}
-                    style={{
-                        layout: 'vertical',
-                        color: 'blue',
-                        shape: 'rect',
-                        label: 'paypal',
-                        // height: 48,
-                        tagline: false,
-                    }}
                 />
                 {error && <p className="text-red-400 mt-2 text-center">{error}</p>}
             </div>
