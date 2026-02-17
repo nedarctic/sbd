@@ -47,13 +47,21 @@ const PayPalButton = ({ amount, onSuccess }: Props) => {
         <PayPalScriptProvider
             options={{ clientId: PAYPAL_CLIENT_CONFIG.clientId }}
         >
-            <div className="mt-6">
+            <div className="flex flex-col items-center justify-center mt-6 w-full max-w-full">
                 <PayPalButtons
                     createOrder={createOrder}
                     onApprove={onApprove}
                     onError={() => setError("PayPal error occurred")}
+                    style={{
+                        layout: 'vertical',
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'paypal',
+                        // height: 48,
+                        tagline: false,
+                    }}
                 />
-                {error && <p className="text-red-400 mt-2">{error}</p>}
+                {error && <p className="text-red-400 mt-2 text-center">{error}</p>}
             </div>
         </PayPalScriptProvider>
     );

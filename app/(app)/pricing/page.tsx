@@ -97,7 +97,7 @@ export default function PricingPage() {
                 <li className={`${oswald.className} flex items-center gap-3`}><Check className="w-5 h-5 text-green-600" /> Plagiarism-safe improvements</li>
               </ul>
 
-              <Link href={`/order?service=Editing, Review & Proofreading&amount=10&unit=flat`} className={`${oswald.className} flex flex-col justify-center items-center mt-10 w-full py-4 bg-[#F9B300] text-black font-bold rounded-xl hover:bg-[#e5a800] transition-all`}>
+              <Link href={`/order?service=Editing, Review and Proofreading&amount=10&unit=flat`} className={`${oswald.className} flex flex-col justify-center items-center mt-10 w-full py-4 bg-[#F9B300] text-black font-bold rounded-xl hover:bg-[#e5a800] transition-all`}>
                 IMPROVE MY WORK
               </Link>
             </div>
@@ -163,7 +163,7 @@ export default function PricingPage() {
                 <p className={`${oswald.className} text-sm text-gray-600 mt-2`}>Journal selection • Formatting • Submission & revisions</p>
               </div>
 
-              <Link href={`/order?service=Publication & Journal Support&amount=200&unit=flat`} className={`${oswald.className} flex flex-col justify-center items-center mt-auto w-full py-4 bg-[#0B3B75] text-white font-bold rounded-xl hover:bg-[#082C58] transition-all`}>
+              <Link href={`/order?service=Publication and Journal Support&amount=200&unit=flat`} className={`${oswald.className} flex flex-col justify-center items-center mt-auto w-full py-4 bg-[#0B3B75] text-white font-bold rounded-xl hover:bg-[#082C58] transition-all`}>
                 PUBLISH MY PAPER
               </Link>
             </div>

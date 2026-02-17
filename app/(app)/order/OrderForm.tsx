@@ -19,8 +19,8 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const SERVICE_PRICING = {
     "Academic Writing Support": { amount: 10, unit: "page" },
     "Research Assistance (Projects, Thesis, Dissertations)": { amount: 12, unit: "page" },
-    "Publication & Journal Support": { amount: 200, unit: "flat" },
-    "Editing, Review & Proofreading": { amount: 10, unit: "page" },
+    "Publication and Journal Support": { amount: 200, unit: "flat" },
+    "Editing, Review and Proofreading": { amount: 10, unit: "page" },
     "General Consultation": { amount: 0, unit: "service" },
 } as const;
 
@@ -88,6 +88,8 @@ export default function OrderForm() {
 
     const pricing =
         SERVICE_PRICING[selectedServiceType as keyof typeof SERVICE_PRICING];
+
+    console.log("Pricing:", pricing)
 
     let computedAmount = 0;
 
@@ -236,7 +238,7 @@ export default function OrderForm() {
                 <button
                     type="submit"
                     disabled={(requiresPayment && !paymentConfirmed) || modalState === "loading"}
-                    className="w-full flex justify-center items-center gap-3 bg-[#E8B85F] text-[#1C1C30] font-bold text-lg py-4 rounded-full
+                    className="w-full flex justify-center items-center gap-3 bg-[#E8B85F] text-[#1C1C30] font-bold text-sm py-4 rounded-full
   disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {requiresPayment && !paymentConfirmed
