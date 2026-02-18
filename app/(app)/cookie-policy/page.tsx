@@ -384,7 +384,8 @@ export default function CookiePolicy() {
 
                     <div className="bg-gray-700 p-6 rounded border border-gray-600">
                       <p className="font-bold text-lg text-[#E8B85F] mb-2">ScholarBrood</p>
-                      <p className="mb-2">Email: <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link></p>
+                      <p className="mb-2">Email: <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                        target="_blank" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link></p>
                       <p className="mb-2">Phone: (+1) 843-699-6020</p>
                       <p>Address: Myrtle Beach, SC 29572, United States</p>
                     </div>

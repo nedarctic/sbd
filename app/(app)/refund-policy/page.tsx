@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function RefundPolicy() {
 
-    const [ year, setYear ] = useState<number | null>(null);
+    const [year, setYear] = useState<number | null>(null);
 
     useEffect(() => {
         setYear(new Date().getFullYear());
@@ -178,7 +178,8 @@ export default function RefundPolicy() {
                                 </h2>
                                 <div className="space-y-4">
                                     <p>
-                                        All refund requests must be submitted in writing within seven (7) days of project delivery. Requests submitted after this period may not be considered. To initiate a refund request, clients must contact ScholarBrood via email at <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>, clearly stating the reason for the request and referencing the original order details.
+                                        All refund requests must be submitted in writing within seven (7) days of project delivery. Requests submitted after this period may not be considered. To initiate a refund request, clients must contact ScholarBrood via email at <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                                            target="_blank" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>, clearly stating the reason for the request and referencing the original order details.
                                     </p>
                                     <p>
                                         ScholarBrood will review each request individually and may request additional information or clarification during the assessment process. Clients are expected to cooperate fully to facilitate a fair evaluation.
@@ -205,7 +206,8 @@ export default function RefundPolicy() {
                                 </h2>
                                 <div className="space-y-4">
                                     <p>
-                                        ScholarBrood reserves the right to update or modify this Refund Policy at any time. Any changes will be posted on the website with an updated "Last Updated" date. Continued use of our services after such changes constitutes acceptance of the revised policy. For questions or clarifications regarding this Refund Policy, please contact <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>.
+                                        ScholarBrood reserves the right to update or modify this Refund Policy at any time. Any changes will be posted on the website with an updated "Last Updated" date. Continued use of our services after such changes constitutes acceptance of the revised policy. For questions or clarifications regarding this Refund Policy, please contact <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                                            target="_blank" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>.
                                     </p>
                                 </div>
                             </section>

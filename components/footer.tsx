@@ -50,7 +50,8 @@ export default function Footer() {
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#E8B85F] flex-shrink-0" />
                   <Link
-                    href="mailto:info@scholarbrood.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                    target="_blank"
                     className={`${oswald.className} hover:text-[#E8B85F] transition break-words`}
                   >
                     info@scholarbrood.com

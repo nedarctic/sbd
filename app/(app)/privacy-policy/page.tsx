@@ -89,7 +89,8 @@ export default function PrivacyPolicy() {
 
               <div className="bg-amber-900/30 border-l-4 border-[#E8B85F] p-4 mb-8">
                 <p className="text-amber-200">
-                  <strong>Questions or concerns?</strong> Reading this Privacy Policy will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>.
+                  <strong>Questions or concerns?</strong> Reading this Privacy Policy will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                    target="_blank" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>.
                 </p>
               </div>
             </section>
@@ -414,7 +415,8 @@ export default function PrivacyPolicy() {
                   8. DO WE COLLECT INFORMATION FROM MINORS?
                 </h2>
                 <p className="mb-4">
-                  We do not knowingly collect, solicit data from, or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or the equivalent age as specified by law in your jurisdiction or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age or the equivalent age as specified by law in your jurisdiction has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18 or the equivalent age as specified by law in your jurisdiction, please contact us at <a href="mailto:justkimtai@gmail.com" className="text-[#daa94e] hover:underline">justkimtai@gmail.com</a>.
+                  We do not knowingly collect, solicit data from, or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or the equivalent age as specified by law in your jurisdiction or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age or the equivalent age as specified by law in your jurisdiction has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18 or the equivalent age as specified by law in your jurisdiction, please contact us at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=justkimtai@gmail.com"
+                    target="_blank" className="text-[#daa94e] hover:underline">justkimtai@gmail.com</a>.
                 </p>
               </section>
 
@@ -467,7 +469,8 @@ export default function PrivacyPolicy() {
                   </div>
 
                   <p>
-                    Cookies and similar technologies: Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. If you have questions or comments about your privacy rights, you may email us at <Link href="mailto:info@scholarbrood.com" className="text-[#daa94e] hover:underline">info@scholarbrood.com</Link>.
+                    Cookies and similar technologies: Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. If you have questions or comments about your privacy rights, you may email us at <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                      target="_blank" className="text-[#daa94e] hover:underline">info@scholarbrood.com</Link>.
                   </p>
                 </div>
               </section>
@@ -608,7 +611,8 @@ export default function PrivacyPolicy() {
                   <div>
                     <h3 className="text-xl font-bold text-gray-100 mb-4">How to Exercise Your Rights</h3>
                     <p className="mb-4">
-                      To exercise these rights, you can contact us by submitting a data subject access request, by emailing us at <Link href="mailto:info@scholarbrood.com" className="text-[#daa94e] hover:underline">info@scholarbrood.com</Link>, or by referring to the contact details at the bottom of this document. Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws.
+                      To exercise these rights, you can contact us by submitting a data subject access request, by emailing us at <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                        target="_blank" className="text-[#daa94e] hover:underline">info@scholarbrood.com</Link>, or by referring to the contact details at the bottom of this document. Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws.
                     </p>
                   </div>
 
@@ -625,7 +629,8 @@ export default function PrivacyPolicy() {
                   <div>
                     <h3 className="text-xl font-bold text-gray-100 mb-4">Appeals</h3>
                     <p>
-                      Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <Link href="mailto:info@scholarbrood.com" className="text-[#daa94e] hover:underline">info@scholarbrood.com</Link>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.
+                      Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                        target="_blank" className="text-[#daa94e] hover:underline">info@scholarbrood.com</Link>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.
                     </p>
                   </div>
                 </div>

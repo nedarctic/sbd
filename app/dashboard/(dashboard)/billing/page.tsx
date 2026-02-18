@@ -46,10 +46,10 @@ function StatusBadge({ status }: { status: string }) {
     normalized === 'active'
       ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
       : normalized === 'cancelled'
-      ? 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
-      : normalized === 'failed'
-      ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
-      : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300'
+        ? 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+        : normalized === 'failed'
+          ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
+          : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300'
 
   return (
     <span className={`px-4 py-1 rounded-full text-sm font-semibold ${styles}`}>
@@ -66,34 +66,34 @@ async function BillingContent() {
     return (
       <div className="flex flex-col justify-center items-start ">
         <DashboardHeader title="Billing & Subscription" subtitle="Log in to manage your plan and payment details" />
-      
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#1C1C30] px-4 py-16">
-        
-        <div className="max-w-lg w-full bg-gradient-to-br from-[#E8B85F]/10 to-[#1C1C30]/10 dark:from-[#E8B85F]/5 dark:to-[#1C1C30]/20 border border-[#E8B85F]/30 rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/20 flex items-center justify-center">
-            <LogIn className="w-10 h-10 text-[#E8B85F]" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-5">
-            Sign in to view billing
-          </h1>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            You need to be logged in to manage your subscription and see billing details.
-          </p>
-          <Link
-            href="/auth/login"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#E8B85F] text-[#1C1C30] rounded-full text-xl font-semibold shadow-xl hover:shadow-2xl transition-all"
-          >
-            Sign In
-            <ArrowRight className="w-6 h-6" />
-          </Link>
-          <p className="mt-6 text-gray-600 dark:text-gray-400">
-            Don't have an account?{' '}
-            <Link href="/auth/signup" className="text-[#E8B85F] hover:underline">
-              Sign up
+
+        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#1C1C30] px-4 py-16">
+
+          <div className="max-w-lg w-full bg-gradient-to-br from-[#E8B85F]/10 to-[#1C1C30]/10 dark:from-[#E8B85F]/5 dark:to-[#1C1C30]/20 border border-[#E8B85F]/30 rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/20 flex items-center justify-center">
+              <LogIn className="w-10 h-10 text-[#E8B85F]" />
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-5">
+              Sign in to view billing
+            </h1>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+              You need to be logged in to manage your subscription and see billing details.
+            </p>
+            <Link
+              href="/auth/login"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#E8B85F] text-[#1C1C30] rounded-full text-xl font-semibold shadow-xl hover:shadow-2xl transition-all"
+            >
+              Sign In
+              <ArrowRight className="w-6 h-6" />
             </Link>
-          </p>
+            <p className="mt-6 text-gray-600 dark:text-gray-400">
+              Don't have an account?{' '}
+              <Link href="/auth/signup" className="text-[#E8B85F] hover:underline">
+                Sign up
+              </Link>
+            </p>
+          </div>
         </div>
-      </div>
       </div>
     )
   }
@@ -122,12 +122,13 @@ async function BillingContent() {
           </Link>
           <p className="mt-8 text-gray-600 dark:text-gray-400">
             Questions?{' '}
-            <a
-              href="mailto:info@scholarbrood.com"
+            <Link
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+              target="_blank"
               className="text-[#E8B85F] hover:underline"
             >
               Contact support
-            </a>
+            </Link>
           </p>
         </div>
       </div>
@@ -210,12 +211,13 @@ async function BillingContent() {
                 )
             )}
 
-            <a
-              href="mailto:info@scholarbrood.com"
+            <Link
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+              target="_blank"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#E8B85F] text-[#E8B85F] font-semibold rounded-full hover:bg-[#E8B85F] hover:text-[#1C1C30] transition"
             >
               Contact Billing Support
-            </a>
+            </Link>
           </div>
         </section>
       </div>

@@ -118,7 +118,7 @@ export default function Home() {
               <h1
                 className={`${oswald.className} text-2xl sm:text-5xl font-bold text-white leading-tight`}
               >
-                Expert Academic Support for Students & Researchers.
+                Expert Academic Support for Students & Researchers
               </h1>
 
               <p className={`${oswald.className} text-md sm:text-xl text-white/90 mt-6 leading-relaxed`}>
@@ -332,7 +332,8 @@ export default function Home() {
               </motion.a>
 
               <motion.a
-                href="mailto:info@scholarbrood.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                target="_blank"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className={`${oswald.className} inline-flex items-center justify-center gap-2 px-8 py-4 border-4 border-[#E8B85F] text-[#E8B85F] text-lg font-semibold rounded-full w-9/12 sm:w-auto`}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Mail, Calendar, User, CreditCard } from "lucide-react";
 import { oswald } from "@/components/ui/fonts";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic"
 
@@ -248,7 +249,8 @@ export default function SuccessClient({ subscriptionDetails }: { subscriptionDet
                         </motion.a>
 
                         <motion.a
-                            href="mailto:support@scholarbrood.com"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                            target="_blank"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             className={`${oswald.className} inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#E8B85F] text-[#E8B85F] rounded-full font-semibold hover:bg-[#E8B85F] hover:text-[#1C1C30] transition-all duration-300 w-full sm:w-auto`}
@@ -270,9 +272,10 @@ export default function SuccessClient({ subscriptionDetails }: { subscriptionDet
 
                     <p className={`${oswald.className} mt-12 text-gray-600 dark:text-gray-400`}>
                         Having issues? Reach out to our support team at{" "}
-                        <a href="mailto:support@scholarbrood.com" className="text-[#E8B85F] hover:underline">
+                        <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                            target="_blank" className="text-[#E8B85F] hover:underline">
                             support@scholarbrood.com
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </section>

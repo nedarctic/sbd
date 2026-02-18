@@ -113,7 +113,8 @@ export default function ContactPage() {
                                     <div className="flex items-center gap-4">
                                         <Mail className="w-6 h-6 text-[#E8B85F]" />
                                         <Link
-                                            href="mailto:info@scholarbrood.com"
+                                            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                                            target="_blank"
                                             className={`${oswald.className} text-lg text-gray-700 dark:text-gray-300 hover:text-[#E8B85F] transition`}
                                         >
                                             info@scholarbrood.com

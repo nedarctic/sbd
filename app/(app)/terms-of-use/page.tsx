@@ -235,7 +235,8 @@ export default function TermsOfService() {
                 </h2>
                 <div className="space-y-4">
                   <p>
-                    For questions, concerns, or clarifications regarding these Terms of Use, please contact us at <Link href="mailto:info@scholarbrood.com" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>. By using ScholarBrood's website and services, you acknowledge that you have read, understood, and agreed to these Terms of Use in full.
+                    For questions, concerns, or clarifications regarding these Terms of Use, please contact us at <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@scholarbrood.com"
+                      target="_blank" className="text-[#E8B85F] hover:underline">info@scholarbrood.com</Link>. By using ScholarBrood's website and services, you acknowledge that you have read, understood, and agreed to these Terms of Use in full.
                   </p>
                 </div>
               </section>
