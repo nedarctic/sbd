@@ -19,7 +19,7 @@ export default function HeaderClient({ authSlot }: { authSlot: React.ReactNode }
         { label: "About Us", href: "/about" },
         { label: "Our Services", href: "/services" },
         { label: "Tutorials", href: "/tutorials" },
-        { label: "Dashboard", href: "/dashboard" },
+        // { label: "Dashboard", href: "/dashboard" },
         { label: "Blogs", href: "/blogs" },
         { label: "Contact Us", href: "/contact" },
     ];
@@ -77,7 +77,7 @@ export default function HeaderClient({ authSlot }: { authSlot: React.ReactNode }
                     </nav>
 
                     {/* Auth Buttons */}
-                    {authSlot}
+                    {/* {authSlot} */}
                 </div>
 
                 {/* Mobile Menu Button */}

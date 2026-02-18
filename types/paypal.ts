@@ -212,4 +212,4 @@ export interface SupabaseJwtPayload {
   is_anonymous: boolean;
 }
 
-export type PAYPAL_MODE = "live" | "sandbox";
+export type PayPalMode = "live" | "sandbox";

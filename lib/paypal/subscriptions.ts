@@ -4,17 +4,26 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { createClient } from "@/lib/supabase/server";
 
-export function isActiveSubscription(sub: StoredSubscription | null) {
-	if (!sub) return false;
-
-	if (sub.status !== "ACTIVE") return false;
-
-	if (sub.failed_payment_status === "failed") return false;
-
-	if (sub.next_billing_time) {
-		return new Date(sub.next_billing_time) > new Date();
+export const isActiveSubscription = (next_billing_time: string) => {
+	if (Date.now() > new Date(next_billing_time).getTime()) {
+		return false;
 	}
+	return true;
+}
 
+export async function checkifUserExisted(user_id: string): Promise<boolean> {
+	console.log("checking if user existed")
+	const supabase = await createClient();
+	const { data, error } = await supabase
+		.from("tutorial_subscriptions")
+		.select("*")
+		.eq("user_id", user_id)
+		.select()
+		.single();
+
+	if (!data || error) {
+		return false;
+	}
 	return true;
 }
 
@@ -72,16 +81,20 @@ export async function UpdateSubscription(subscription: StoredSubscription): Prom
 	const { data, error } = await supabase
 		.from("tutorial_subscriptions")
 		.update(subscription)
-		.eq("paypal_subscription_id", subscription.paypal_subscription_id)
-		.select()
-		.single();
+		.eq("user_id", subscription.user_id)
+		.select();
 
 	if (error) {
-		// console.error("UpdateSubscription error:", error);
+		console.error("UpdateSubscription error:", error);
 		return null;
 	}
 
-	return data;
+	if (!data || data.length === 0) {
+		console.warn("No subscription found to update");
+		return null;
+	}
+
+	return data[0];
 }
 
 export async function UpdateSubscriptionStatus(subscription: Subscription): Promise<Subscription | null> {

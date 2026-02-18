@@ -27,7 +27,7 @@ export default function ServicesClient() {
             className="relative z-10 text-center px-6 max-w-6xl mx-auto text-white flex flex-col items-center"
           >
             <h1 className={`${oswald.className} text-2xl sm:text-5xl font-bold mb-8 tracking-tight leading-tight`}>
-              Achieve Academic Excellence With Expert Writing & Research Support
+              Services We Offer
             </h1>
             <p className={`${oswald.className} text-md sm:text-xl max-w-4xl mx-auto leading-relaxed px-4 mb-12`}>
               From academic papers to full research projects and journal publication — ScholarBrood gives you the professional support you need to succeed

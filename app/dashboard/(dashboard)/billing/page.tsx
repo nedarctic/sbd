@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import DashboardHeader from '../ui/header-dashboard'
+import { isActiveSubscription } from '@/lib/paypal/subscriptions'
 
 export const dynamic = "force-dynamic"
 
@@ -28,7 +29,11 @@ async function getUserAndSubscription() {
   }
 
   const subscription: StoredSubscription | null = await GetSubscription(user.id)
-  return { user, subscription }
+
+  // subscription status
+  const hasActiveSubscription = isActiveSubscription(subscription?.next_billing_time!);
+
+  return { user, subscription, hasActiveSubscription }
 }
 
 function formatDate(date?: string) {
@@ -59,7 +64,7 @@ function StatusBadge({ status }: { status: string }) {
 }
 
 async function BillingContent() {
-  const { user, subscription } = await getUserAndSubscription()
+  const { user, subscription, hasActiveSubscription } = await getUserAndSubscription()
 
   // Not logged in
   if (!user) {
@@ -99,9 +104,9 @@ async function BillingContent() {
   }
 
   // Logged in but no subscription
-  if (!subscription) {
+  if (!hasActiveSubscription) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#1C1C30] px-4 py-16">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-[#1C1C30] px-4 py-16">
         <DashboardHeader title="Billing & Subscription" subtitle="Subscribe to manage your plan and payment details" />
         <div className="max-w-lg w-full bg-gradient-to-br from-[#E8B85F]/8 to-[#1C1C30]/12 border-2 border-[#E8B85F]/25 rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/15 flex items-center justify-center">
@@ -136,7 +141,7 @@ async function BillingContent() {
   }
 
   // Has active subscription → show real content
-  const planName = getPayPalPlanName(subscription.plan_id)
+  const planName = getPayPalPlanName(subscription?.plan_id!)
 
   return (
     <main className={`${oswald.className} min-h-screen bg-white dark:bg-[#1C1C30] text-gray-900 dark:text-gray-100 px-6 py-16 md:py-20`}>
@@ -157,29 +162,29 @@ async function BillingContent() {
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold">{planName}</h2>
               <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm sm:text-base">
-                Subscription ID: {subscription.paypal_subscription_id}
+                Subscription ID: {subscription?.paypal_subscription_id!}
               </p>
             </div>
-            <StatusBadge status={subscription.status} />
+            <StatusBadge status={subscription?.status!} />
           </div>
 
           {/* Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/40 dark:bg-[#1C1C30]/50">
               <p className="text-sm text-gray-500 dark:text-gray-400">Start Date</p>
-              <p className="text-lg font-semibold mt-1">{formatDate(subscription.start_time)}</p>
+              <p className="text-lg font-semibold mt-1">{formatDate(subscription?.start_time)}</p>
             </div>
 
             <div className="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/40 dark:bg-[#1C1C30]/50">
               <p className="text-sm text-gray-500 dark:text-gray-400">Next Billing Date</p>
-              <p className="text-lg font-semibold mt-1">{formatDate(subscription.next_billing_time)}</p>
+              <p className="text-lg font-semibold mt-1">{formatDate(subscription?.next_billing_time)}</p>
             </div>
 
             <div className="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/40 dark:bg-[#1C1C30]/50">
               <p className="text-sm text-gray-500 dark:text-gray-400">Last Payment</p>
               <p className="text-lg font-semibold mt-1">
-                {subscription.last_payment
-                  ? `${subscription.last_payment.amount.value} ${subscription.last_payment.amount.currency_code}`
+                {subscription?.last_payment
+                  ? `${subscription?.last_payment.amount.value} ${subscription?.last_payment.amount.currency_code}`
                   : '—'}
               </p>
             </div>
@@ -187,8 +192,8 @@ async function BillingContent() {
             <div className="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/40 dark:bg-[#1C1C30]/50">
               <p className="text-sm text-gray-500 dark:text-gray-400">Subscriber</p>
               <p className="text-lg font-semibold mt-1">
-                {subscription.subscriber_name
-                  ? `${subscription.subscriber_name.given_name} ${subscription.subscriber_name.surname}`
+                {subscription?.subscriber_name
+                  ? `${subscription?.subscriber_name.given_name} ${subscription?.subscriber_name.surname}`
                   : user.email || '—'}
               </p>
             </div>
@@ -196,7 +201,7 @@ async function BillingContent() {
 
           {/* Actions */}
           <div className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4">
-            {subscription.links?.map(
+            {subscription?.links?.map(
               (link, id) =>
                 link.rel === 'approve' && (
                   <a

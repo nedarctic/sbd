@@ -1,6 +1,6 @@
-import type { PayPalConfig, SubscriptionPlan, PAYPAL_MODE } from "@/types/paypal";
+import type { PayPalConfig, SubscriptionPlan } from "@/types/paypal";
 
-const PAYPAL_MODE: PAYPAL_MODE = "live";
+const PAYPAL_MODE = process.env.NEXT_PUBLIC_PAYPAL_MODE!;
 
 export const PAYPAL_CLIENT_CONFIG: PayPalConfig = {
 	clientId: PAYPAL_MODE === "live" ? process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! : process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID_SANDBOX!,	

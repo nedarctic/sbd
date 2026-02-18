@@ -1,11 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
 import { InfoIcon, Shield, BookOpen, FileText, CheckCircle, ArrowRight, LogIn, CreditCard } from "lucide-react";
-import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 import { GetSubscription } from "@/lib/paypal/subscriptions";
 import { oswald } from "@/components/ui/fonts";
 import { getPayPalPlanName } from "@/lib/paypal/paypal";
 import Link from "next/link";
 import DashboardHeader from "./ui/header-dashboard";
+import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +27,23 @@ async function getUserAndSubscription() {
 export default async function DashboardPage() {
   const { user, subscription } = await getUserAndSubscription();
 
-  const hasActiveSubscription = user && subscription?.status === "ACTIVE";
+  const hasActiveSubscription = user && isActiveSubscription(subscription?.next_billing_time!);
+  console.log("Subscription:", subscription);
+  console.log("Has active subscription?", hasActiveSubscription)
+
+  // sample data for last payment:
+  const last_payment = {
+    amount: {
+      currency_code: "USD",
+      value: "9.99"
+    },
+    time: "2026-01-30T12:17:54Z"
+  }
+
+  // sample data for next billing time
+  const next_billing_time = "2026-01-31T10:00:00+00:00"
+
+  
 
   // ────────────────────────────────────────────────
   //  Not logged in → show sign-in prompt
@@ -41,11 +57,11 @@ export default async function DashboardPage() {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8B85F]/20 flex items-center justify-center">
               <LogIn className="w-10 h-10 text-[#E8B85F]" />
             </div>
-            
+
             <h1 className={`${oswald.className} text-3xl sm:text-4xl font-bold mb-4`}>
               Welcome to <span className="text-[#E8B85F]">ScholarBrood</span>
             </h1>
-            
+
             <p className={`${oswald.className} text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto`}>
               Sign in to access your dashboard, manage your subscription, and unlock premium academic tools.
             </p>

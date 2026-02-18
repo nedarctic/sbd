@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getPayPalAccessToken } from "@/lib/paypal/paypal";
 import { createClient } from "@/lib/supabase/server";
 import { StoredSubscription } from "@/types/subscription";
-import { StoreSubscription } from "@/lib/paypal/subscriptions";
+import { checkifUserExisted, StoreSubscription, UpdateSubscription } from "@/lib/paypal/subscriptions";
 import { getPayPalPlanName } from "@/lib/paypal/paypal";
 import { PAYPAL_SERVER_CONFIG } from "@/config/paypal.server";
 
@@ -78,9 +78,23 @@ export async function GET(
                         raw: data,
                 };
 
-                // Store subscription in Supabase
-                const storedSubscription = await StoreSubscription(supabase, mapped);
-                // console.log("Stored subscription:", storedSubscription);
+                // check if user had subscription before
+                const hadSubscriptionBefore = await checkifUserExisted(mapped.user_id);
+                console.log("Did the user have a subscription before?", hadSubscriptionBefore);
+
+                if (!hadSubscriptionBefore) {
+                        // Store subscription in Supabase
+                        const newSub = await StoreSubscription(supabase, mapped);
+                        console.log("created new subscription", newSub);
+
+                } else {
+                        // update existing subscription in supabase
+                        const updatedSub = await UpdateSubscription(mapped);
+                        console.log("Updated existing subscription", updatedSub)
+                }
+
+
+
 
                 const planName = getPayPalPlanName(data.plan_id);
 

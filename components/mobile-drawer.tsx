@@ -67,7 +67,7 @@ function MobileDrawer({ isOpen, onClose, navItems, oswald, authSlot }: DrawerPro
 
                         {/* Auth Buttons */}
                         <div onClick={onClose} className="px-8 pb-10">
-                            {authSlot}
+                            {/* {authSlot} */}
                         </div>
                         {/* Footer */}
                         <motion.p

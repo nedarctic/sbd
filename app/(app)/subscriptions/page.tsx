@@ -48,7 +48,8 @@ async function getSubscriptionDetails(): Promise<StoredSubscription | null> {
 
 async function getSubscriptionStatus(): Promise<boolean>{
   const subscription = await getSubscriptionDetails();
-  if(isActiveSubscription(subscription)){
+
+  if(isActiveSubscription(subscription?.next_billing_time!)){
     return true;
   } else {
     return false;

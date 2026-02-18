@@ -1,28 +1,32 @@
 import { oswald } from "@/components/ui/fonts";
 import { createClient } from "@/lib/supabase/server";
 import { GetSubscription } from "@/lib/paypal/subscriptions";
+import { isActiveSubscription } from "@/lib/paypal/subscriptions";
 import Link from "next/link";
 import { LogIn, CreditCard, ArrowRight } from "lucide-react";
 import DashboardHeader from "../ui/header-dashboard";
+import type { StoredSubscription } from '@/types/subscription'
 
 export const dynamic = "force-dynamic"
 
 async function getUserAndSubscriptionStatus() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
-    return { isAuthenticated: false, hasActiveSub: false };
+    return { user: null, subscription: null }
   }
 
-  const subscription = await GetSubscription(user.id);
-  const hasActiveSub = subscription?.status === "ACTIVE";
+  const subscription: StoredSubscription | null = await GetSubscription(user.id)
 
-  return { isAuthenticated: true, hasActiveSub };
+  // subscription status
+  const hasActiveSubscription = isActiveSubscription(subscription?.next_billing_time!);
+
+  return { user, hasActiveSubscription }
 }
 
 export default async function TutorialsPage() {
-  const { isAuthenticated, hasActiveSub } = await getUserAndSubscriptionStatus();
+  const { user, hasActiveSubscription } = await getUserAndSubscriptionStatus();
 
   return (
     <div
@@ -36,7 +40,7 @@ export default async function TutorialsPage() {
     >
       <div className="max-w-lg w-full text-center">
         {/* Not logged in */}
-        {!isAuthenticated && (
+        {!user && (
           <div className="flex flex-col justify-center items-center ">
             <DashboardHeader title="Tutorials Access" subtitle="Sign in to access Tutorials" />
 
@@ -69,7 +73,7 @@ export default async function TutorialsPage() {
         )}
 
         {/* Logged in, but no active subscription */}
-        {isAuthenticated && !hasActiveSub && (
+        {user && !hasActiveSubscription && (
           <div className="flex flex-col justify-center items-center ">
             <DashboardHeader title="Tutorials Access" subtitle="Subscribe to access tutorials and learning materials" />
 
@@ -102,7 +106,7 @@ export default async function TutorialsPage() {
         )}
 
         {/* Logged in + has active subscription → show current placeholder */}
-        {isAuthenticated && hasActiveSub && (
+        {user && hasActiveSubscription && (
           <div className="flex flex-col justify-center items-center ">
             <DashboardHeader title="Tutorials Access" subtitle="Premium tutorials and learning materials" />
 

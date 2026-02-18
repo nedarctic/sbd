@@ -116,7 +116,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
+                {/* <div className="flex items-center gap-4">
                   <button
                     onClick={() => setIsBookmarked(!isBookmarked)}
                     className={`p-3 rounded-full backdrop-blur-md transition-all duration-300 ${isBookmarked
@@ -132,7 +132,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   >
                     <Share2 size={20} />
                   </button>
-                </div>
+                </div> */}
               </motion.div>
             </div>
           </div>
@@ -472,7 +472,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                     <ArrowLeft className="w-6 h-6 rotate-180 relative z-10" />
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                   </Link>
-                  <button
+                  {/* <button
                     onClick={() => setIsBookmarked(!isBookmarked)}
                     className={`inline-flex items-center justify-center gap-3 px-8 py-5 rounded-full border-2 transition-all duration-400 ${isBookmarked
                       ? 'bg-[#E8B85F]/10 border-[#E8B85F] text-[#E8B85F]'
@@ -481,7 +481,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   >
                     <Bookmark size={20} fill={isBookmarked ? "currentColor" : "none"} />
                     {isBookmarked ? 'Bookmarked' : 'Save for Later'}
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

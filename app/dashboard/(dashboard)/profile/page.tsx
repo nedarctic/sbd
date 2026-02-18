@@ -19,7 +19,7 @@ import {
 import { oswald } from "@/components/ui/fonts";
 import Link from "next/link";
 import DashboardHeader from "../ui/header-dashboard";
-import { GetSubscription } from "@/lib/paypal/subscriptions";
+import { GetSubscription, isActiveSubscription } from "@/lib/paypal/subscriptions";
 import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic"
@@ -183,7 +183,8 @@ function VerificationBadge({ verified, label }: VerificationBadgeProps) {
 
 export default async function ProfilePage() {
   const { user, subscription } = await getUserAndSubscription();
-  const hasActiveSubscription = subscription?.status === "ACTIVE";
+
+  const hasActiveSubscription = isActiveSubscription(subscription?.next_billing_time!);
 
   return (
     <div className={`${oswald.className} space-y-6 sm:space-y-8 px-3 sm:px-4 lg:px-8 py-4 sm:py-8`}>
@@ -220,37 +221,40 @@ export default async function ProfilePage() {
 
       {/* Authenticated but no active subscription */}
       {user && !hasActiveSubscription && (
-        <div className="bg-gradient-to-br from-[#E8B85F]/8 to-[#1C1C30]/12 dark:from-[#E8B85F]/4 dark:to-[#1C1C30]/18 border-2 border-[#E8B85F]/25 rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+        <div className="flex flex-col items-center justify-center w-full min-h-screen space-y-4">
           <DashboardHeader title="Profile Access" subtitle="Active subscription required to view profile details" />
-          <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#E8B85F]/15 flex items-center justify-center">
-            <CreditCard className="w-8 h-8 text-[#E8B85F]" />
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Active subscription required
-          </h2>
-          <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-7 max-w-2xl mx-auto">
-            This profile area is available only to users with an active ScholarBrood subscription.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/subscriptions"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#E8B85F] text-[#1C1C30] rounded-full text-base sm:text-lg font-semibold shadow-md hover:shadow-lg transition-all"
-            >
-              View subscription plans
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/dashboard/billing"
-              className="text-[#E8B85F] hover:underline text-base sm:text-lg font-medium"
-            >
-              Check billing status →
-            </Link>
+          <div className="bg-gradient-to-br from-[#E8B85F]/8 to-[#1C1C30]/12 dark:from-[#E8B85F]/4 dark:to-[#1C1C30]/18 border-2 border-[#E8B85F]/25 rounded-3xl p-6 sm:p-10 shadow-xl text-center">
+
+            <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#E8B85F]/15 flex items-center justify-center">
+              <CreditCard className="w-8 h-8 text-[#E8B85F]" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              Active subscription required
+            </h2>
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-7 max-w-2xl mx-auto">
+              This profile area is available only to users with an active ScholarBrood subscription.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/subscriptions"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#E8B85F] text-[#1C1C30] rounded-full text-base sm:text-lg font-semibold shadow-md hover:shadow-lg transition-all"
+              >
+                View subscription plans
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/dashboard/billing"
+                className="text-[#E8B85F] hover:underline text-base sm:text-lg font-medium"
+              >
+                Check billing status →
+              </Link>
+            </div>
           </div>
         </div>
       )}
 
       {/* Protected content — only shown when authenticated + subscribed */}
-      {hasActiveSubscription && (
+      {user && hasActiveSubscription && (
         <>
           {/* Profile Header */}
           <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-[#1C1C30] to-[#2C2C40] dark:from-[#0A0A1A] dark:to-[#1C1C30] rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl">

@@ -27,8 +27,8 @@ export default function Footer() {
 
   const socialLinks = [
     { Icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61587677614993" },
-    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/scholarbrood/?viewAsMember=true." },
-    // { Icon: FaInstagram, href: "https://www.instagram.com/scholarbrood/" },
+    { Icon: FaLinkedin, href: "https://www.linkedin.com/company/111715822/admin/page-posts/published/" },
+    { Icon: FaInstagram, href: "https://www.instagram.com/scholarbrood1/" },
     { Icon: FaYoutube, href: "https://www.youtube.com/@ScholarBrood" },
     // { Icon: FaReddit, href: "https://www.reddit.com/user/scholarbrood/" },
     // { Icon: FaTumblr, href: "https://scholarbrood.tumblr.com/" },

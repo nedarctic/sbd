@@ -55,7 +55,7 @@ export default function SubscriptionsPage({userDetails, subscriptionDetails, isA
   // console.log("User ID in subscription page:", user.id);
 
   // get the subscription details of the user
-  const subscription = subscriptionDetails;
+  // const subscription = subscriptionDetails;
 
   // log the subscription details
   // console.log("subscription details at subscription page:", subscription);

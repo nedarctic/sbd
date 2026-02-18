@@ -524,7 +524,7 @@ export default function TutorialsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
-                onClick={() => router.push("/about")}
+                onClick={() => router.push("/contact")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 rounded-full bg-gray-900 text-white text-lg font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center"

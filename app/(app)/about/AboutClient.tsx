@@ -30,7 +30,7 @@ export default function AboutClient() {
             About <span className="text-[#E8B85F]">Us</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-8 px-4 max-w-4xl">
-            ScholarBrood is a dedicated team of experienced academics, researchers, and writing professionals committed to helping students, scholars, and researchers excel.
+            ScholarBrood gives you academic support, integrity, and excellence to achieve outstanding scholarly and professional success.
           </p>
           <Link
             // to be changed back to contact
