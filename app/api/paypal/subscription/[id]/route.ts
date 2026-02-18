@@ -80,17 +80,17 @@ export async function GET(
 
                 // check if user had subscription before
                 const hadSubscriptionBefore = await checkifUserExisted(mapped.user_id);
-                console.log("Did the user have a subscription before?", hadSubscriptionBefore);
+                // console.log("Did the user have a subscription before?", hadSubscriptionBefore);
 
                 if (!hadSubscriptionBefore) {
                         // Store subscription in Supabase
                         const newSub = await StoreSubscription(supabase, mapped);
-                        console.log("created new subscription", newSub);
+                        // console.log("created new subscription", newSub);
 
                 } else {
                         // update existing subscription in supabase
                         const updatedSub = await UpdateSubscription(mapped);
-                        console.log("Updated existing subscription", updatedSub)
+                        // console.log("Updated existing subscription", updatedSub)
                 }
 
 

@@ -28,20 +28,8 @@ export default async function DashboardPage() {
   const { user, subscription } = await getUserAndSubscription();
 
   const hasActiveSubscription = user && isActiveSubscription(subscription?.next_billing_time!);
-  console.log("Subscription:", subscription);
-  console.log("Has active subscription?", hasActiveSubscription)
-
-  // sample data for last payment:
-  const last_payment = {
-    amount: {
-      currency_code: "USD",
-      value: "9.99"
-    },
-    time: "2026-01-30T12:17:54Z"
-  }
-
-  // sample data for next billing time
-  const next_billing_time = "2026-01-31T10:00:00+00:00"
+  // console.log("Subscription:", subscription);
+  // console.log("Has active subscription?", hasActiveSubscription)
 
   
 
