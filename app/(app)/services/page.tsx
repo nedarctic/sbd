@@ -2,8 +2,8 @@ import ServicesClient from './ServicesClient';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Academic Writing, Research Support & Publication Services | ScholarBrood",
-  description: "ScholarBrood offers professional academic writing, research guidance, and publication processing services for students and researchers worldwide. High-quality, plagiarism-free work, expert mentorship, fast delivery, and journal-ready manuscript support.",
+  title: "Academic Services – Writing, Editing, Research & Publication Help",
+  description: "Explore ScholarBrood’s comprehensive services including academic writing, dissertation support, editing, proofreading, research projects, data analysis, and publication assistance.",
   keywords: [
     "academic writing services",
     "research support",
